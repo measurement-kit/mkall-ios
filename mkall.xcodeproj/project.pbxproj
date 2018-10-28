@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06014DB821864BFB003DC2C8 /* MkGeoIPLookupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06014DB721864BFB003DC2C8 /* MkGeoIPLookupTests.m */; };
+		06141EBD2186555D00299D69 /* MkGeoIPLookup.h in Headers */ = {isa = PBXBuildFile; fileRef = 06141EBC2186555D00299D69 /* MkGeoIPLookup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06141EBF2186559C00299D69 /* MkGeoIPLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 06141EBE2186559C00299D69 /* MkGeoIPLookup.m */; };
 		062BBFC02186260B004E5135 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062BBFBF2186260B004E5135 /* libmaxminddb.framework */; };
 		062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 062BBFC12186261D004E5135 /* mkgeoip.cpp */; };
 		062BBFC42186261D004E5135 /* mkgeoip.h in Headers */ = {isa = PBXBuildFile; fileRef = 062BBFC22186261D004E5135 /* mkgeoip.h */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06014DB721864BFB003DC2C8 /* MkGeoIPLookupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkGeoIPLookupTests.m; sourceTree = "<group>"; };
+		06141EBC2186555D00299D69 /* MkGeoIPLookup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MkGeoIPLookup.h; sourceTree = "<group>"; };
+		06141EBE2186559C00299D69 /* MkGeoIPLookup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkGeoIPLookup.m; sourceTree = "<group>"; };
 		062BBFBF2186260B004E5135 /* libmaxminddb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmaxminddb.framework; path = Framework/libmaxminddb.framework; sourceTree = "<group>"; };
 		062BBFC12186261D004E5135 /* mkgeoip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mkgeoip.cpp; sourceTree = "<group>"; };
 		062BBFC22186261D004E5135 /* mkgeoip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkgeoip.h; sourceTree = "<group>"; };
@@ -88,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06014DB621864ACB003DC2C8 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				062BBFC521862ABF004E5135 /* mkdataTests.mm */,
+				06C805A621863AB9009663B2 /* mkcurlTests.mm */,
+				06C805A821863E2C009663B2 /* mkgeoipTests.mm */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
 		0674631A2185F8EB00D93CDE = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +134,8 @@
 				067463282185F8EB00D93CDE /* Info.plist */,
 				06C805AA21864148009663B2 /* MkResources.h */,
 				06C805AC21864194009663B2 /* MkResources.m */,
+				06141EBC2186555D00299D69 /* MkGeoIPLookup.h */,
+				06141EBE2186559C00299D69 /* MkGeoIPLookup.m */,
 			);
 			path = mkall;
 			sourceTree = "<group>";
@@ -125,11 +143,10 @@
 		067463312185F8EC00D93CDE /* mkallTests */ = {
 			isa = PBXGroup;
 			children = (
+				06014DB621864ACB003DC2C8 /* vendor */,
+				06014DB721864BFB003DC2C8 /* MkGeoIPLookupTests.m */,
 				067463322185F8EC00D93CDE /* MkResourcesTests.m */,
-				062BBFC521862ABF004E5135 /* mkdataTests.mm */,
 				067463342185F8EC00D93CDE /* Info.plist */,
-				06C805A621863AB9009663B2 /* mkcurlTests.mm */,
-				06C805A821863E2C009663B2 /* mkgeoipTests.mm */,
 			);
 			path = mkallTests;
 			sourceTree = "<group>";
@@ -165,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06903F4421860EFC007F15F9 /* mkcurl.h in Headers */,
+				06141EBD2186555D00299D69 /* MkGeoIPLookup.h in Headers */,
 				06C805AB21864148009663B2 /* MkResources.h in Headers */,
 				0692D9BD2185F90B00BD0F5D /* mkdata.h in Headers */,
 				062BBFC42186261D004E5135 /* mkgeoip.h in Headers */,
@@ -271,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */,
+				06141EBF2186559C00299D69 /* MkGeoIPLookup.m in Sources */,
 				06C805AD21864194009663B2 /* MkResources.m in Sources */,
 				0692D9C22185F95000BD0F5D /* mkdata.cpp in Sources */,
 				06903F4621860F12007F15F9 /* mkcurl.cpp in Sources */,
@@ -284,6 +303,7 @@
 				06C805A921863E2C009663B2 /* mkgeoipTests.mm in Sources */,
 				06C805A721863AB9009663B2 /* mkcurlTests.mm in Sources */,
 				067463332185F8EC00D93CDE /* MkResourcesTests.m in Sources */,
+				06014DB821864BFB003DC2C8 /* MkGeoIPLookupTests.m in Sources */,
 				062BBFC621862ABF004E5135 /* mkdataTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
