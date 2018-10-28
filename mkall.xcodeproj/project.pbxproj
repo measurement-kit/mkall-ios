@@ -24,6 +24,7 @@
 		0692D9BD2185F90B00BD0F5D /* mkdata.h in Headers */ = {isa = PBXBuildFile; fileRef = 0692D9BA2185F90B00BD0F5D /* mkdata.h */; };
 		0692D9C22185F95000BD0F5D /* mkdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0692D9C12185F95000BD0F5D /* mkdata.cpp */; };
 		06C805A721863AB9009663B2 /* mkcurlTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06C805A621863AB9009663B2 /* mkcurlTests.mm */; };
+		06C805A921863E2C009663B2 /* mkgeoipTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06C805A821863E2C009663B2 /* mkgeoipTests.mm */; };
 		06DEC1F82186251600FB9D32 /* libssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DEC1F72186251600FB9D32 /* libssl.framework */; };
 		06DEC1FA2186252200FB9D32 /* libcrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DEC1F92186252200FB9D32 /* libcrypto.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		0692D9BA2185F90B00BD0F5D /* mkdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkdata.h; sourceTree = "<group>"; };
 		0692D9C12185F95000BD0F5D /* mkdata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mkdata.cpp; sourceTree = "<group>"; };
 		06C805A621863AB9009663B2 /* mkcurlTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mkcurlTests.mm; sourceTree = "<group>"; };
+		06C805A821863E2C009663B2 /* mkgeoipTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mkgeoipTests.mm; sourceTree = "<group>"; };
 		06DEC1F72186251600FB9D32 /* libssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libssl.framework; path = Framework/libssl.framework; sourceTree = "<group>"; };
 		06DEC1F92186252200FB9D32 /* libcrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libcrypto.framework; path = Framework/libcrypto.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				062BBFC521862ABF004E5135 /* mkdataTests.mm */,
 				067463342185F8EC00D93CDE /* Info.plist */,
 				06C805A621863AB9009663B2 /* mkcurlTests.mm */,
+				06C805A821863E2C009663B2 /* mkgeoipTests.mm */,
 			);
 			path = mkallTests;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06C805A921863E2C009663B2 /* mkgeoipTests.mm in Sources */,
 				06C805A721863AB9009663B2 /* mkcurlTests.mm in Sources */,
 				067463332185F8EC00D93CDE /* mkallTests.m in Sources */,
 				062BBFC621862ABF004E5135 /* mkdataTests.mm in Sources */,
