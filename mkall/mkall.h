@@ -1,12 +1,8 @@
-//
-//  mkall.h
-//  mkall
-//
-//  Created by Simone Basso on 28/10/2018.
-//  Copyright © 2018 Simone Basso. All rights reserved.
-//
+// Part of Measurement Kit <https://measurement-kit.github.io/>.
+// Measurement Kit is free software under the BSD license. See AUTHORS
+// and LICENSE for more information on the copying conditions.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for mkall.
 FOUNDATION_EXPORT double mkallVersionNumber;
@@ -14,6 +10,12 @@ FOUNDATION_EXPORT double mkallVersionNumber;
 //! Project version string for mkall.
 FOUNDATION_EXPORT const unsigned char mkallVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <mkall/PublicHeader.h>
+@interface MkResources : NSObject
 
++ (NSString *)getMMDBCountryPath;
 
++ (NSString *)getMMDBASNPath;
+
++ (NSString *)getCABundlePath;
+
+@end  // interface MkResources

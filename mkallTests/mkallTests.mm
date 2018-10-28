@@ -4,6 +4,8 @@
 
 #import <XCTest/XCTest.h>
 
+#import "mkall.h"
+
 @interface mkallTests : XCTestCase
 
 @end
@@ -14,6 +16,12 @@
 }
 
 - (void)tearDown {
+}
+
+- (void)testMkResources {
+  XCTAssert([MkResources getMMDBCountryPath] != nil);
+  XCTAssert([MkResources getMMDBASNPath] != nil);
+  XCTAssert([MkResources getCABundlePath] != nil);
 }
 
 - (void)testPerformanceExample {

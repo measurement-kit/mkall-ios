@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0628359D21862D6C001B8AC4 /* mkall.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628359C21862D6C001B8AC4 /* mkall.m */; };
 		062BBFC02186260B004E5135 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062BBFBF2186260B004E5135 /* libmaxminddb.framework */; };
 		062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 062BBFC12186261D004E5135 /* mkgeoip.cpp */; };
 		062BBFC42186261D004E5135 /* mkgeoip.h in Headers */ = {isa = PBXBuildFile; fileRef = 062BBFC22186261D004E5135 /* mkgeoip.h */; };
 		062BBFC621862ABF004E5135 /* mkdataTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 062BBFC521862ABF004E5135 /* mkdataTest.mm */; };
 		064E1A3F218623240002B84F /* libcurl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 064E1A3E218623240002B84F /* libcurl.framework */; };
+		065AA11521863811003985E4 /* asn.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 065AA11221863811003985E4 /* asn.mmdb */; };
+		065AA11621863811003985E4 /* country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 065AA11321863811003985E4 /* country.mmdb */; };
+		065AA11721863811003985E4 /* ca-bundle.pem in Resources */ = {isa = PBXBuildFile; fileRef = 065AA11421863811003985E4 /* ca-bundle.pem */; };
 		0674632E2185F8EC00D93CDE /* mkall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 067463242185F8EB00D93CDE /* mkall.framework */; };
 		067463332185F8EC00D93CDE /* mkallTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 067463322185F8EC00D93CDE /* mkallTests.mm */; };
 		067463352185F8EC00D93CDE /* mkall.h in Headers */ = {isa = PBXBuildFile; fileRef = 067463272185F8EB00D93CDE /* mkall.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,11 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0628359C21862D6C001B8AC4 /* mkall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mkall.m; sourceTree = "<group>"; };
 		062BBFBF2186260B004E5135 /* libmaxminddb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmaxminddb.framework; path = Framework/libmaxminddb.framework; sourceTree = "<group>"; };
 		062BBFC12186261D004E5135 /* mkgeoip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mkgeoip.cpp; sourceTree = "<group>"; };
 		062BBFC22186261D004E5135 /* mkgeoip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkgeoip.h; sourceTree = "<group>"; };
 		062BBFC521862ABF004E5135 /* mkdataTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mkdataTest.mm; sourceTree = "<group>"; };
 		064E1A3E218623240002B84F /* libcurl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libcurl.framework; path = Framework/libcurl.framework; sourceTree = "<group>"; };
+		065AA11221863811003985E4 /* asn.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = asn.mmdb; sourceTree = "<group>"; };
+		065AA11321863811003985E4 /* country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = country.mmdb; sourceTree = "<group>"; };
+		065AA11421863811003985E4 /* ca-bundle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ca-bundle.pem"; sourceTree = "<group>"; };
 		067463242185F8EB00D93CDE /* mkall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mkall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		067463272185F8EB00D93CDE /* mkall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mkall.h; sourceTree = "<group>"; };
 		067463282185F8EB00D93CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,14 +109,18 @@
 		067463262185F8EB00D93CDE /* mkall */ = {
 			isa = PBXGroup;
 			children = (
-				062BBFC12186261D004E5135 /* mkgeoip.cpp */,
+				065AA11221863811003985E4 /* asn.mmdb */,
+				065AA11421863811003985E4 /* ca-bundle.pem */,
+				065AA11321863811003985E4 /* country.mmdb */,
 				062BBFC22186261D004E5135 /* mkgeoip.h */,
+				062BBFC12186261D004E5135 /* mkgeoip.cpp */,
 				06903F4321860EFC007F15F9 /* mkcurl.h */,
-				0692D9BA2185F90B00BD0F5D /* mkdata.h */,
-				067463272185F8EB00D93CDE /* mkall.h */,
-				067463282185F8EB00D93CDE /* Info.plist */,
-				0692D9C12185F95000BD0F5D /* mkdata.cpp */,
 				06903F4521860F12007F15F9 /* mkcurl.cpp */,
+				0692D9BA2185F90B00BD0F5D /* mkdata.h */,
+				0692D9C12185F95000BD0F5D /* mkdata.cpp */,
+				067463272185F8EB00D93CDE /* mkall.h */,
+				0628359C21862D6C001B8AC4 /* mkall.m */,
+				067463282185F8EB00D93CDE /* Info.plist */,
 			);
 			path = mkall;
 			sourceTree = "<group>";
@@ -216,6 +228,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				065AA11621863811003985E4 /* country.mmdb in Resources */,
+				065AA11721863811003985E4 /* ca-bundle.pem in Resources */,
+				065AA11521863811003985E4 /* asn.mmdb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +251,7 @@
 				062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */,
 				0692D9C22185F95000BD0F5D /* mkdata.cpp in Sources */,
 				06903F4621860F12007F15F9 /* mkcurl.cpp in Sources */,
+				0628359D21862D6C001B8AC4 /* mkall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
