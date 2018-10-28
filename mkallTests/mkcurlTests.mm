@@ -5,7 +5,7 @@
 #import <XCTest/XCTest.h>
 
 #import "mkcurl.h"
-#import "mkall.h"
+#import "MkResources.h"
 
 @interface mkcurlTests : XCTestCase
 

@@ -2,9 +2,7 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
-#import <Foundation/Foundation.h>
-
-#import "mkall.h"
+#import "MkResources.h"
 
 @implementation MkResources
 
@@ -23,4 +21,4 @@
     pathForResource:@"ca-bundle" ofType:@"pem"];
 }
 
-@end  // interface MkResources
+@end  // implementation MkResources

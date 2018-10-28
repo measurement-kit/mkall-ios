@@ -4,7 +4,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "mkall.h"
+#import "MkResources.h"
 
 @interface mkallTests : XCTestCase
 

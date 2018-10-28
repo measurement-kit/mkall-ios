@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0628359D21862D6C001B8AC4 /* mkall.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628359C21862D6C001B8AC4 /* mkall.m */; };
 		062BBFC02186260B004E5135 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062BBFBF2186260B004E5135 /* libmaxminddb.framework */; };
 		062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 062BBFC12186261D004E5135 /* mkgeoip.cpp */; };
 		062BBFC42186261D004E5135 /* mkgeoip.h in Headers */ = {isa = PBXBuildFile; fileRef = 062BBFC22186261D004E5135 /* mkgeoip.h */; };
@@ -17,14 +16,15 @@
 		065AA11621863811003985E4 /* country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 065AA11321863811003985E4 /* country.mmdb */; };
 		065AA11721863811003985E4 /* ca-bundle.pem in Resources */ = {isa = PBXBuildFile; fileRef = 065AA11421863811003985E4 /* ca-bundle.pem */; };
 		0674632E2185F8EC00D93CDE /* mkall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 067463242185F8EB00D93CDE /* mkall.framework */; };
-		067463332185F8EC00D93CDE /* mkallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 067463322185F8EC00D93CDE /* mkallTests.m */; };
-		067463352185F8EC00D93CDE /* mkall.h in Headers */ = {isa = PBXBuildFile; fileRef = 067463272185F8EB00D93CDE /* mkall.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		067463332185F8EC00D93CDE /* MkResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 067463322185F8EC00D93CDE /* MkResourcesTests.m */; };
 		06903F4421860EFC007F15F9 /* mkcurl.h in Headers */ = {isa = PBXBuildFile; fileRef = 06903F4321860EFC007F15F9 /* mkcurl.h */; };
 		06903F4621860F12007F15F9 /* mkcurl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06903F4521860F12007F15F9 /* mkcurl.cpp */; };
 		0692D9BD2185F90B00BD0F5D /* mkdata.h in Headers */ = {isa = PBXBuildFile; fileRef = 0692D9BA2185F90B00BD0F5D /* mkdata.h */; };
 		0692D9C22185F95000BD0F5D /* mkdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0692D9C12185F95000BD0F5D /* mkdata.cpp */; };
 		06C805A721863AB9009663B2 /* mkcurlTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06C805A621863AB9009663B2 /* mkcurlTests.mm */; };
 		06C805A921863E2C009663B2 /* mkgeoipTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06C805A821863E2C009663B2 /* mkgeoipTests.mm */; };
+		06C805AB21864148009663B2 /* MkResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C805AA21864148009663B2 /* MkResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06C805AD21864194009663B2 /* MkResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C805AC21864194009663B2 /* MkResources.m */; };
 		06DEC1F82186251600FB9D32 /* libssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DEC1F72186251600FB9D32 /* libssl.framework */; };
 		06DEC1FA2186252200FB9D32 /* libcrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DEC1F92186252200FB9D32 /* libcrypto.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0628359C21862D6C001B8AC4 /* mkall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mkall.m; sourceTree = "<group>"; };
 		062BBFBF2186260B004E5135 /* libmaxminddb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmaxminddb.framework; path = Framework/libmaxminddb.framework; sourceTree = "<group>"; };
 		062BBFC12186261D004E5135 /* mkgeoip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mkgeoip.cpp; sourceTree = "<group>"; };
 		062BBFC22186261D004E5135 /* mkgeoip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkgeoip.h; sourceTree = "<group>"; };
@@ -50,10 +49,9 @@
 		065AA11321863811003985E4 /* country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = country.mmdb; sourceTree = "<group>"; };
 		065AA11421863811003985E4 /* ca-bundle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ca-bundle.pem"; sourceTree = "<group>"; };
 		067463242185F8EB00D93CDE /* mkall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mkall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		067463272185F8EB00D93CDE /* mkall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mkall.h; sourceTree = "<group>"; };
 		067463282185F8EB00D93CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0674632D2185F8EC00D93CDE /* mkallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mkallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		067463322185F8EC00D93CDE /* mkallTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mkallTests.m; sourceTree = "<group>"; };
+		067463322185F8EC00D93CDE /* MkResourcesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkResourcesTests.m; sourceTree = "<group>"; };
 		067463342185F8EC00D93CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06903F4321860EFC007F15F9 /* mkcurl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkcurl.h; sourceTree = "<group>"; };
 		06903F4521860F12007F15F9 /* mkcurl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mkcurl.cpp; sourceTree = "<group>"; };
@@ -61,6 +59,8 @@
 		0692D9C12185F95000BD0F5D /* mkdata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mkdata.cpp; sourceTree = "<group>"; };
 		06C805A621863AB9009663B2 /* mkcurlTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mkcurlTests.mm; sourceTree = "<group>"; };
 		06C805A821863E2C009663B2 /* mkgeoipTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mkgeoipTests.mm; sourceTree = "<group>"; };
+		06C805AA21864148009663B2 /* MkResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MkResources.h; sourceTree = "<group>"; };
+		06C805AC21864194009663B2 /* MkResources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkResources.m; sourceTree = "<group>"; };
 		06DEC1F72186251600FB9D32 /* libssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libssl.framework; path = Framework/libssl.framework; sourceTree = "<group>"; };
 		06DEC1F92186252200FB9D32 /* libcrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libcrypto.framework; path = Framework/libcrypto.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,9 +122,9 @@
 				06903F4521860F12007F15F9 /* mkcurl.cpp */,
 				0692D9BA2185F90B00BD0F5D /* mkdata.h */,
 				0692D9C12185F95000BD0F5D /* mkdata.cpp */,
-				067463272185F8EB00D93CDE /* mkall.h */,
-				0628359C21862D6C001B8AC4 /* mkall.m */,
 				067463282185F8EB00D93CDE /* Info.plist */,
+				06C805AA21864148009663B2 /* MkResources.h */,
+				06C805AC21864194009663B2 /* MkResources.m */,
 			);
 			path = mkall;
 			sourceTree = "<group>";
@@ -132,7 +132,7 @@
 		067463312185F8EC00D93CDE /* mkallTests */ = {
 			isa = PBXGroup;
 			children = (
-				067463322185F8EC00D93CDE /* mkallTests.m */,
+				067463322185F8EC00D93CDE /* MkResourcesTests.m */,
 				062BBFC521862ABF004E5135 /* mkdataTests.mm */,
 				067463342185F8EC00D93CDE /* Info.plist */,
 				06C805A621863AB9009663B2 /* mkcurlTests.mm */,
@@ -149,8 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				06903F4421860EFC007F15F9 /* mkcurl.h in Headers */,
+				06C805AB21864148009663B2 /* MkResources.h in Headers */,
 				0692D9BD2185F90B00BD0F5D /* mkdata.h in Headers */,
-				067463352185F8EC00D93CDE /* mkall.h in Headers */,
 				062BBFC42186261D004E5135 /* mkgeoip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,9 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				062BBFC32186261D004E5135 /* mkgeoip.cpp in Sources */,
+				06C805AD21864194009663B2 /* MkResources.m in Sources */,
 				0692D9C22185F95000BD0F5D /* mkdata.cpp in Sources */,
 				06903F4621860F12007F15F9 /* mkcurl.cpp in Sources */,
-				0628359D21862D6C001B8AC4 /* mkall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +267,7 @@
 			files = (
 				06C805A921863E2C009663B2 /* mkgeoipTests.mm in Sources */,
 				06C805A721863AB9009663B2 /* mkcurlTests.mm in Sources */,
-				067463332185F8EC00D93CDE /* mkallTests.m in Sources */,
+				067463332185F8EC00D93CDE /* MkResourcesTests.m in Sources */,
 				062BBFC621862ABF004E5135 /* mkdataTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

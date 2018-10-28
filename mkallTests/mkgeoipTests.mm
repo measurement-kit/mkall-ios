@@ -5,7 +5,7 @@
 #import <XCTest/XCTest.h>
 
 #import "mkgeoip.h"
-#import "mkall.h"
+#import "MkResources.h"
 
 @interface mkgeoipTests : XCTestCase
 
