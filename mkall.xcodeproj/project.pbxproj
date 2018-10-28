@@ -113,15 +113,8 @@
 		067463262185F8EB00D93CDE /* mkall */ = {
 			isa = PBXGroup;
 			children = (
-				065AA11221863811003985E4 /* asn.mmdb */,
-				065AA11421863811003985E4 /* ca-bundle.pem */,
-				065AA11321863811003985E4 /* country.mmdb */,
-				062BBFC22186261D004E5135 /* mkgeoip.h */,
-				062BBFC12186261D004E5135 /* mkgeoip.cpp */,
-				06903F4321860EFC007F15F9 /* mkcurl.h */,
-				06903F4521860F12007F15F9 /* mkcurl.cpp */,
-				0692D9BA2185F90B00BD0F5D /* mkdata.h */,
-				0692D9C12185F95000BD0F5D /* mkdata.cpp */,
+				06C805AF218642D5009663B2 /* resources */,
+				06C805AE21864295009663B2 /* vendor */,
 				067463282185F8EB00D93CDE /* Info.plist */,
 				06C805AA21864148009663B2 /* MkResources.h */,
 				06C805AC21864194009663B2 /* MkResources.m */,
@@ -139,6 +132,29 @@
 				06C805A821863E2C009663B2 /* mkgeoipTests.mm */,
 			);
 			path = mkallTests;
+			sourceTree = "<group>";
+		};
+		06C805AE21864295009663B2 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				062BBFC12186261D004E5135 /* mkgeoip.cpp */,
+				06903F4521860F12007F15F9 /* mkcurl.cpp */,
+				0692D9C12185F95000BD0F5D /* mkdata.cpp */,
+				0692D9BA2185F90B00BD0F5D /* mkdata.h */,
+				062BBFC22186261D004E5135 /* mkgeoip.h */,
+				06903F4321860EFC007F15F9 /* mkcurl.h */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		06C805AF218642D5009663B2 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				065AA11221863811003985E4 /* asn.mmdb */,
+				065AA11421863811003985E4 /* ca-bundle.pem */,
+				065AA11321863811003985E4 /* country.mmdb */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
