@@ -2,10 +2,14 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
+// Note: this file is Objective-C++ because otherwise the whole project
+// will compile as Objective-C and link will fail mentioning that several
+// C++ related symbols are missing (of course).
+
 #import "MkGeoIPLookup.h"
 #import "MkResources.h"
 
-#import "vendor/mkgeoip.h"
+#import <measurement_kit/vendor/mkgeoip.h>
 
 @interface MkGeoIPLookupResults()
 
