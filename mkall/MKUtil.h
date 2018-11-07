@@ -17,7 +17,8 @@
 @property property_type *impl;                         \
 @end
 
-// MKUTIL_DEINIT defines the destructor.
+// MKUTIL_DEINIT defines the destructor. We assume that ARC is enabled
+// therefore we MUST NOT send a deinit message to the parent.
 #define MKUTIL_DEINIT(cxx_func) \
 -(void)deinit {                 \
   cxx_func(self.impl);          \
