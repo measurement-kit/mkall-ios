@@ -7,11 +7,11 @@
 #import "MKTask.h"
 #import "MKResources.h"
 
-@interface mkTaskTests : XCTestCase
+@interface MKTaskTests : XCTestCase
 
 @end
 
-@implementation mkTaskTests
+@implementation MKTaskTests
 
 - (void)testMKTask {
   NSDictionary *settings = @{

@@ -6,11 +6,11 @@
 
 #import "MKGeoIPLookup.h"
 
-@interface mkGeoIPLookupTests : XCTestCase
+@interface MKGeoIPLookupTests : XCTestCase
 
 @end
 
-@implementation mkGeoIPLookupTests
+@implementation MKGeoIPLookupTests
 
 - (void)testMKResources {
   MKGeoIPLookupSettings *settings = [[MKGeoIPLookupSettings alloc] init];

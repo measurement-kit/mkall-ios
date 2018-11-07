@@ -6,11 +6,11 @@
 
 #import "MKResources.h"
 
-@interface mkResourcesTests : XCTestCase
+@interface MKResourcesTests : XCTestCase
 
 @end
 
-@implementation mkResourcesTests
+@implementation MKResourcesTests
 
 - (void)testMKResources {
   XCTAssert([MKResources getMMDBCountryPath] != nil);
