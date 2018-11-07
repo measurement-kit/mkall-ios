@@ -28,35 +28,35 @@
 }
 
 -(BOOL)good {
-  return mkgeoip_lookup_results_good(self.results);
+  return mkgeoip_lookup_results_good_v2(self.results);
 }
 
 -(double)getBytesSent {
-  return mkgeoip_lookup_results_get_bytes_sent(self.results);
+  return mkgeoip_lookup_results_get_bytes_sent_v2(self.results);
 }
 
 -(double)getBytesRecv {
-  return mkgeoip_lookup_results_get_bytes_recv(self.results);
+  return mkgeoip_lookup_results_get_bytes_recv_v2(self.results);
 }
 
 -(NSString *)getProbeIP {
-  const char *s = mkgeoip_lookup_results_get_probe_ip(self.results);
+  const char *s = mkgeoip_lookup_results_get_probe_ip_v2(self.results);
   if (s == NULL) abort();
   return [NSString stringWithUTF8String:s];
 }
 
 -(int64_t)getProbeASN {
-  return mkgeoip_lookup_results_get_probe_asn(self.results);
+  return mkgeoip_lookup_results_get_probe_asn_v2(self.results);
 }
 
 -(NSString *)getProbeCC {
-  const char *s = mkgeoip_lookup_results_get_probe_cc(self.results);
+  const char *s = mkgeoip_lookup_results_get_probe_cc_v2(self.results);
   if (s == NULL) abort();
   return [NSString stringWithUTF8String:s];
 }
 
 -(NSString *)getProbeOrg {
-  const char *s = mkgeoip_lookup_results_get_probe_org(self.results);
+  const char *s = mkgeoip_lookup_results_get_probe_org_v2(self.results);
   if (s == NULL) abort();
   return [NSString stringWithUTF8String:s];
 }
@@ -64,9 +64,7 @@
 -(NSData *)getLogs {
   const uint8_t *base = NULL;
   size_t count = 0;
-  if (!mkgeoip_lookup_results_get_logs_binary(self.results, &base, &count)) {
-    abort();
-  }
+  mkgeoip_lookup_results_get_logs_binary_v2(self.results, &base, &count);
   if (base == NULL || count <= 0 || count > NSIntegerMax) abort();
   return [NSData dataWithBytes:(const void *)base length:count];
 }
@@ -87,7 +85,7 @@
 
 -(id)init {
   if ((self = [super init]) != nil) {
-    self.settings = mkgeoip_lookup_settings_new();
+    self.settings = mkgeoip_lookup_settings_new_nonnull();
     if (self.settings == NULL) abort();
     NSString *CABundlePath = [MkResources getCABundlePath];
     NSString *MMDBASNPath = [MkResources getMMDBASNPath];
@@ -95,23 +93,23 @@
     if (CABundlePath == nil || MMDBASNPath == nil || MMDBCountryPath == nil) {
       abort();
     }
-    mkgeoip_lookup_settings_set_ca_bundle_path(
+    mkgeoip_lookup_settings_set_ca_bundle_path_v2(
       self.settings, [CABundlePath UTF8String]);
-    mkgeoip_lookup_settings_set_asn_db_path(
+    mkgeoip_lookup_settings_set_asn_db_path_v2(
       self.settings, [MMDBASNPath UTF8String]);
-    mkgeoip_lookup_settings_set_country_db_path(
+    mkgeoip_lookup_settings_set_country_db_path_v2(
       self.settings, [MMDBCountryPath UTF8String]);
   }
   return self;
 }
 
 -(void)setTimeout:(int64_t)timeout {
-  mkgeoip_lookup_settings_set_timeout(self.settings, timeout);
+  mkgeoip_lookup_settings_set_timeout_v2(self.settings, timeout);
 }
 
 -(MkGeoIPLookupResults *)perform {
   return [[MkGeoIPLookupResults alloc]
-    initWithPointer:mkgeoip_lookup_settings_perform(self.settings)];
+    initWithPointer:mkgeoip_lookup_settings_perform_nonnull(self.settings)];
 }
 
 -(void)deinit {

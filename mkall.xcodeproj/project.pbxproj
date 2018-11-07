@@ -16,7 +16,6 @@
 		0674632E2185F8EC00D93CDE /* mkall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 067463242185F8EB00D93CDE /* mkall.framework */; };
 		067463332185F8EC00D93CDE /* MkResourcesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 067463322185F8EC00D93CDE /* MkResourcesTests.m */; };
 		06873B792186681F002C2399 /* libssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B6E2186681D002C2399 /* libssl.framework */; };
-		06873B7A2186681F002C2399 /* libGeoIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B6F2186681E002C2399 /* libGeoIP.framework */; };
 		06873B7B2186681F002C2399 /* libevent_openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B702186681E002C2399 /* libevent_openssl.framework */; };
 		06873B7D2186681F002C2399 /* libevent_extra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B722186681E002C2399 /* libevent_extra.framework */; };
 		06873B7E2186681F002C2399 /* libevent_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B732186681E002C2399 /* libevent_core.framework */; };
@@ -55,7 +54,6 @@
 		067463322185F8EC00D93CDE /* MkResourcesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkResourcesTests.m; sourceTree = "<group>"; };
 		067463342185F8EC00D93CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06873B6E2186681D002C2399 /* libssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libssl.framework; path = Framework/libssl.framework; sourceTree = "<group>"; };
-		06873B6F2186681E002C2399 /* libGeoIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libGeoIP.framework; path = Framework/libGeoIP.framework; sourceTree = "<group>"; };
 		06873B702186681E002C2399 /* libevent_openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libevent_openssl.framework; path = Framework/libevent_openssl.framework; sourceTree = "<group>"; };
 		06873B722186681E002C2399 /* libevent_extra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libevent_extra.framework; path = Framework/libevent_extra.framework; sourceTree = "<group>"; };
 		06873B732186681E002C2399 /* libevent_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libevent_core.framework; path = Framework/libevent_core.framework; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				06873B822186681F002C2399 /* libcurl.framework in Frameworks */,
 				06873B812186681F002C2399 /* libcrypto.framework in Frameworks */,
 				06873B832186681F002C2399 /* libmeasurement_kit.framework in Frameworks */,
-				06873B7A2186681F002C2399 /* libGeoIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +106,6 @@
 				06873B722186681E002C2399 /* libevent_extra.framework */,
 				06873B702186681E002C2399 /* libevent_openssl.framework */,
 				06873B752186681E002C2399 /* libevent_pthreads.framework */,
-				06873B6F2186681E002C2399 /* libGeoIP.framework */,
 				06873B742186681E002C2399 /* libmaxminddb.framework */,
 				06873B782186681E002C2399 /* libmeasurement_kit.framework */,
 				06873B6E2186681D002C2399 /* libssl.framework */,
