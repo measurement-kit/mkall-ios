@@ -4,7 +4,7 @@
 
 #import "MKTask.h"
 
-#include "measurement_kit/ffi.h"
+#import "measurement_kit/ffi.h"
 
 @interface MKTask ()
 

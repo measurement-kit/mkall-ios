@@ -7,114 +7,53 @@
 // C++ related symbols are missing (of course).
 
 #import "MKGeoIPLookup.h"
-#import "MKResources.h"
 
-#import <measurement_kit/vendor/mkgeoip.h>
+#import "measurement_kit/vendor/mkgeoip.h"
 
-@interface MKGeoIPLookupResults()
+#import "MKUtil.h"
 
-@property mkgeoip_lookup_results_t *results;
-
-@end  // interface MKGeoIPLookupResults
+MKUTIL_EXTEND_CLASS(MKGeoIPLookupResults, mkgeoip_lookup_results_t)
 
 @implementation MKGeoIPLookupResults
 
--(id)initWithPointer:(mkgeoip_lookup_results_t *)res {
-  if ((self = [super init]) != nil) {
-    self.results = res;
-    if (self.results == NULL) abort();
-  }
-  return self;
-}
+MKUTIL_INIT_WITH_POINTER(mkgeoip_lookup_results_t)
 
--(BOOL)good {
-  return mkgeoip_lookup_results_good_v2(self.results);
-}
+MKUTIL_GET_BOOL(good, mkgeoip_lookup_results_good_v2)
 
--(double)getBytesSent {
-  return mkgeoip_lookup_results_get_bytes_sent_v2(self.results);
-}
+MKUTIL_GET_DOUBLE(getBytesSent, mkgeoip_lookup_results_get_bytes_sent_v2)
 
--(double)getBytesRecv {
-  return mkgeoip_lookup_results_get_bytes_recv_v2(self.results);
-}
+MKUTIL_GET_DOUBLE(getBytesRecv, mkgeoip_lookup_results_get_bytes_recv_v2)
 
--(NSString *)getProbeIP {
-  const char *s = mkgeoip_lookup_results_get_probe_ip_v2(self.results);
-  if (s == NULL) abort();
-  return [NSString stringWithUTF8String:s];
-}
+MKUTIL_GET_STRING(getProbeIP, mkgeoip_lookup_results_get_probe_ip_v2)
 
--(int64_t)getProbeASN {
-  return mkgeoip_lookup_results_get_probe_asn_v2(self.results);
-}
+MKUTIL_GET_INT(getProbeASN, mkgeoip_lookup_results_get_probe_asn_v2)
 
--(NSString *)getProbeCC {
-  const char *s = mkgeoip_lookup_results_get_probe_cc_v2(self.results);
-  if (s == NULL) abort();
-  return [NSString stringWithUTF8String:s];
-}
+MKUTIL_GET_STRING(getProbeCC, mkgeoip_lookup_results_get_probe_cc_v2)
 
--(NSString *)getProbeOrg {
-  const char *s = mkgeoip_lookup_results_get_probe_org_v2(self.results);
-  if (s == NULL) abort();
-  return [NSString stringWithUTF8String:s];
-}
+MKUTIL_GET_STRING(getProbeOrg, mkgeoip_lookup_results_get_probe_org_v2)
 
--(NSData *)getLogs {
-  const uint8_t *base = NULL;
-  size_t count = 0;
-  mkgeoip_lookup_results_get_logs_binary_v2(self.results, &base, &count);
-  if (base == NULL || count <= 0 || count > NSIntegerMax) abort();
-  return [NSData dataWithBytes:(const void *)base length:count];
-}
+MKUTIL_GET_DATA(getLogs, mkgeoip_lookup_results_get_logs_binary_v2)
 
--(void)deinit {
-  mkgeoip_lookup_results_delete(self.results);
-}
+MKUTIL_DEINIT(mkgeoip_lookup_results_delete)
 
 @end  // implementation MKGeoIPLookupResults
 
-@interface MKGeoIPLookupSettings()
-
-@property mkgeoip_lookup_settings_t *settings;
-
-@end  // interface MKGeoIPLookupSettings
+MKUTIL_EXTEND_CLASS(MKGeoIPLookupSettings, mkgeoip_lookup_settings_t)
 
 @implementation MKGeoIPLookupSettings
 
--(id)init {
-  if ((self = [super init]) != nil) {
-    self.settings = mkgeoip_lookup_settings_new_nonnull();
-    if (self.settings == NULL) abort();
-    NSString *CABundlePath = [MKResources getCABundlePath];
-    NSString *MMDBASNPath = [MKResources getMMDBASNPath];
-    NSString *MMDBCountryPath = [MKResources getMMDBCountryPath];
-    if (CABundlePath == nil || MMDBASNPath == nil || MMDBCountryPath == nil) {
-      abort();
-    }
-    mkgeoip_lookup_settings_set_ca_bundle_path_v2(
-      self.settings, [CABundlePath UTF8String]);
-    mkgeoip_lookup_settings_set_asn_db_path_v2(
-      self.settings, [MMDBASNPath UTF8String]);
-    mkgeoip_lookup_settings_set_country_db_path_v2(
-      self.settings, [MMDBCountryPath UTF8String]);
-  }
-  return self;
-}
+MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
+  mkgeoip_lookup_settings_new_nonnull,
+  mkgeoip_lookup_settings_set_ca_bundle_path_v2,
+  mkgeoip_lookup_settings_set_asn_db_path_v2,
+  mkgeoip_lookup_settings_set_country_db_path_v2)
 
--(void)setTimeout:(int64_t)timeout {
-  mkgeoip_lookup_settings_set_timeout_v2(self.settings, timeout);
-}
+MKUTIL_SET_INT(setTimeout, mkgeoip_lookup_settings_set_timeout_v2)
 
--(MKGeoIPLookupResults *)perform {
-  return [[MKGeoIPLookupResults alloc]
-    initWithPointer:mkgeoip_lookup_settings_perform_nonnull(self.settings)];
-}
+MKUTIL_WRAP_GET_POINTER(MKGeoIPLookupResults, perform,
+  mkgeoip_lookup_settings_perform_nonnull)
 
--(void)deinit {
-  mkgeoip_lookup_settings_delete(self.settings);
-}
+MKUTIL_DEINIT(mkgeoip_lookup_settings_delete)
 
 @end  // implementation MKGeoIPLookupSettings
 
