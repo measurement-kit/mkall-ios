@@ -10,6 +10,7 @@ if [ ! -f Framework/.stamp ]; then (
   ./script/build/unix/framework-ios `./script/build/unix/all-deps.sh`
   ./script/build/unix/framework-ios measurement-kit
   rm -rf MK_DIST  # cleanup temporary dir
+  touch Framework/.stamp
 ) fi
 
 # TODO(bassosimone): this should perhaps be a release of the assets themselves.
