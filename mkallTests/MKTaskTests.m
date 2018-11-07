@@ -4,8 +4,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MkTask.h"
-#import "MkResources.h"
+#import "MKTask.h"
+#import "MKResources.h"
 
 @interface mkTaskTests : XCTestCase
 
@@ -13,16 +13,16 @@
 
 @implementation mkTaskTests
 
-- (void)testMkTask {
+- (void)testMKTask {
   NSDictionary *settings = @{
     @"log_level": @"DEBUG",
     @"name": @"Ndt",
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MkResources getCABundlePath],
+      @"net/ca_bundle_path": [MKResources getCABundlePath],
     }
   };
-  MkTask *task = [MkTask startNettest:settings];
+  MKTask *task = [MKTask startNettest:settings];
   XCTAssert(task != nil);
   while (![task isDone]) {
     NSDictionary *event = [task waitForNextEvent];

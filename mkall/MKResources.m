@@ -2,23 +2,23 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
-#import "MkResources.h"
+#import "MKResources.h"
 
-@implementation MkResources
+@implementation MKResources
 
 + (NSString *)getMMDBCountryPath {
-  return [[NSBundle bundleForClass:[MkResources class]]
+  return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"country" ofType:@"mmdb"];
 }
 
 + (NSString *)getMMDBASNPath{
-  return [[NSBundle bundleForClass:[MkResources class]]
+  return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"asn" ofType:@"mmdb"];
 }
 
 + (NSString *)getCABundlePath{
-  return [[NSBundle bundleForClass:[MkResources class]]
+  return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"ca-bundle" ofType:@"pem"];
 }
 
-@end  // implementation MkResources
+@end  // implementation MKResources

@@ -4,7 +4,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MkGeoIPLookup.h"
+#import "MKGeoIPLookup.h"
 
 @interface mkGeoIPLookupTests : XCTestCase
 
@@ -12,10 +12,10 @@
 
 @implementation mkGeoIPLookupTests
 
-- (void)testMkResources {
-  MkGeoIPLookupSettings *settings = [[MkGeoIPLookupSettings alloc] init];
+- (void)testMKResources {
+  MKGeoIPLookupSettings *settings = [[MKGeoIPLookupSettings alloc] init];
   [settings setTimeout:17];
-  MkGeoIPLookupResults *results = [settings perform];
+  MKGeoIPLookupResults *results = [settings perform];
   XCTAssert([results good]);
   {
     NSString *s = [results getProbeIP];

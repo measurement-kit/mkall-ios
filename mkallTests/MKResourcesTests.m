@@ -4,7 +4,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MkResources.h"
+#import "MKResources.h"
 
 @interface mkResourcesTests : XCTestCase
 
@@ -12,10 +12,10 @@
 
 @implementation mkResourcesTests
 
-- (void)testMkResources {
-  XCTAssert([MkResources getMMDBCountryPath] != nil);
-  XCTAssert([MkResources getMMDBASNPath] != nil);
-  XCTAssert([MkResources getCABundlePath] != nil);
+- (void)testMKResources {
+  XCTAssert([MKResources getMMDBCountryPath] != nil);
+  XCTAssert([MKResources getMMDBASNPath] != nil);
+  XCTAssert([MKResources getCABundlePath] != nil);
 }
 
 @end

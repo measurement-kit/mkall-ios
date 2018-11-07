@@ -2,15 +2,15 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
-#import "MkTask.h"
+#import "MKTask.h"
 
 #include "measurement_kit/ffi.h"
 
-@interface MkTask ()
+@interface MKTask ()
 
 @property mk_task_t *task;
 
-@end  // interface MkTask
+@end  // interface MKTask
 
 // Serialize settings to JSON.
 static NSString *marshal_settings(NSDictionary *settings) {
@@ -22,12 +22,12 @@ static NSString *marshal_settings(NSDictionary *settings) {
   return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-@implementation MkTask
+@implementation MKTask
 
-+ (MkTask *)startNettest:(NSDictionary *)settings {
++ (MKTask *)startNettest:(NSDictionary *)settings {
   NSString *str = marshal_settings(settings);
   if (str == nil) return nil;
-  MkTask *task = [MkTask alloc];
+  MKTask *task = [MKTask alloc];
   if (task == nil) return nil;
   task.task = mk_nettest_start([str UTF8String]);
   return (task.task != nil) ? task : nil;
@@ -68,4 +68,4 @@ static NSString *marshal_settings(NSDictionary *settings) {
   mk_task_destroy(self.task);
 }
 
-@end  // implementation MkTask
+@end  // implementation MKTask

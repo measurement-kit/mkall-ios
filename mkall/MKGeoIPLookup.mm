@@ -6,18 +6,18 @@
 // will compile as Objective-C and link will fail mentioning that several
 // C++ related symbols are missing (of course).
 
-#import "MkGeoIPLookup.h"
-#import "MkResources.h"
+#import "MKGeoIPLookup.h"
+#import "MKResources.h"
 
 #import <measurement_kit/vendor/mkgeoip.h>
 
-@interface MkGeoIPLookupResults()
+@interface MKGeoIPLookupResults()
 
 @property mkgeoip_lookup_results_t *results;
 
-@end  // interface MkGeoIPLookupResults
+@end  // interface MKGeoIPLookupResults
 
-@implementation MkGeoIPLookupResults
+@implementation MKGeoIPLookupResults
 
 -(id)initWithPointer:(mkgeoip_lookup_results_t *)res {
   if ((self = [super init]) != nil) {
@@ -73,23 +73,23 @@
   mkgeoip_lookup_results_delete(self.results);
 }
 
-@end  // implementation MkGeoIPLookupResults
+@end  // implementation MKGeoIPLookupResults
 
-@interface MkGeoIPLookupSettings()
+@interface MKGeoIPLookupSettings()
 
 @property mkgeoip_lookup_settings_t *settings;
 
-@end  // interface MkGeoIPLookupSettings
+@end  // interface MKGeoIPLookupSettings
 
-@implementation MkGeoIPLookupSettings
+@implementation MKGeoIPLookupSettings
 
 -(id)init {
   if ((self = [super init]) != nil) {
     self.settings = mkgeoip_lookup_settings_new_nonnull();
     if (self.settings == NULL) abort();
-    NSString *CABundlePath = [MkResources getCABundlePath];
-    NSString *MMDBASNPath = [MkResources getMMDBASNPath];
-    NSString *MMDBCountryPath = [MkResources getMMDBCountryPath];
+    NSString *CABundlePath = [MKResources getCABundlePath];
+    NSString *MMDBASNPath = [MKResources getMMDBASNPath];
+    NSString *MMDBCountryPath = [MKResources getMMDBCountryPath];
     if (CABundlePath == nil || MMDBASNPath == nil || MMDBCountryPath == nil) {
       abort();
     }
@@ -107,8 +107,8 @@
   mkgeoip_lookup_settings_set_timeout_v2(self.settings, timeout);
 }
 
--(MkGeoIPLookupResults *)perform {
-  return [[MkGeoIPLookupResults alloc]
+-(MKGeoIPLookupResults *)perform {
+  return [[MKGeoIPLookupResults alloc]
     initWithPointer:mkgeoip_lookup_settings_perform_nonnull(self.settings)];
 }
 
@@ -116,5 +116,5 @@
   mkgeoip_lookup_settings_delete(self.settings);
 }
 
-@end  // implementation MkGeoIPLookupSettings
+@end  // implementation MKGeoIPLookupSettings
 

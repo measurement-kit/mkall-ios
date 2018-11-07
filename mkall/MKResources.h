@@ -1,12 +1,12 @@
 // Part of Measurement Kit <https://measurement-kit.github.io/>.
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
-#ifndef MkResources_h
-#define MkResources_h
+#ifndef MKResources_h
+#define MKResources_h
 
 #import <Foundation/Foundation.h>
 
-@interface MkResources : NSObject
+@interface MKResources : NSObject
 
 + (NSString *)getMMDBCountryPath;
 
@@ -14,6 +14,6 @@
 
 + (NSString *)getCABundlePath;
 
-@end  // interface MkResources
+@end  // interface MKResources
 
-#endif /* MkResources_h */
+#endif /* MKResources_h */

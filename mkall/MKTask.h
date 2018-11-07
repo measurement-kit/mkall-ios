@@ -1,14 +1,14 @@
 // Part of Measurement Kit <https://measurement-kit.github.io/>.
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
-#ifndef MkTask_h
-#define MkTask_h
+#ifndef MKTask_h
+#define MKTask_h
 
 #import <Foundation/Foundation.h>
 
-@interface MkTask : NSObject
+@interface MKTask : NSObject
 
-+ (MkTask *)startNettest:(NSDictionary *)data;
++ (MKTask *)startNettest:(NSDictionary *)data;
 
 - (BOOL)isDone;
 
@@ -18,6 +18,6 @@
 
 - (void)deinit;
 
-@end  // interface MkTask
+@end  // interface MKTask
 
-#endif /* MkTask_h */
+#endif /* MKTask_h */
