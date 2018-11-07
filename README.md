@@ -9,6 +9,5 @@ that you want to `--use-submodules`.)
 
 ```
 git submodule update --init  # optional, if you didn't `git clone --recursive`
-./configure.bash
 open mkall.xcodeproj
 ```
