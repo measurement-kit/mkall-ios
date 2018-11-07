@@ -5,21 +5,14 @@ prebuilt_repo=https://github.com/measurement-kit/prebuilt
 # Download all MK libraries in a single archive
 if [ ! -f Framework/.stamp ]; then (
   set -ex
-  version=0.9.0-alpha.11-9
-  shasum=b9a4e2a09bc7eb8a7cfb8cc9404fe2c6951dac1721a13d67330a0a67db553c55
-  curl -fsSLO $prebuilt_repo/releases/download/testing/ios-all-$version.tar.gz
-  real_shasum=`shasum -a 256 ios-all-$version.tar.gz | awk '{print $1}'`
-  [ $real_shasum = $shasum ]
-  rm -rf Framework/*
-  (
-    set -ex
-    cd Framework
-    tar -xzf ../ios-all-$version.tar.gz
-  )
-  rm -f ios-all-$version.tar.gz
-  touch Framework/.stamp
+  ./script/build/unix/install `./script/build/unix/all-deps.sh ios-`
+  ./script/build/unix/install ios-measurement-kit
+  ./script/build/unix/framework-ios `./script/build/unix/all-deps.sh`
+  ./script/build/unix/framework-ios measurement-kit
+  rm -rf MK_DIST  # cleanup temporary dir
 ) fi
 
+# TODO(bassosimone): this should perhaps be a release of the assets themselves.
 # Download generic assets (.mmdb files, ca-bundle.pem)
 if [ ! -f mkall/resources/.stamp ]; then (
   set -ex
