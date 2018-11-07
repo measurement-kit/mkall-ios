@@ -25,7 +25,7 @@
 		06873B822186681F002C2399 /* libcurl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B772186681E002C2399 /* libcurl.framework */; };
 		06873B832186681F002C2399 /* libmeasurement_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06873B782186681E002C2399 /* libmeasurement_kit.framework */; };
 		06873B8521867066002C2399 /* MkTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 06873B8421867066002C2399 /* MkTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06873B8721867237002C2399 /* MkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 06873B8621867237002C2399 /* MkTask.m */; };
+		06873B8721867237002C2399 /* MkTask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06873B8621867237002C2399 /* MkTask.mm */; };
 		06873B89218678FA002C2399 /* MkTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06873B88218678FA002C2399 /* MkTaskTests.m */; };
 		06C805AB21864148009663B2 /* MkResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C805AA21864148009663B2 /* MkResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06C805AD21864194009663B2 /* MkResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C805AC21864194009663B2 /* MkResources.m */; };
@@ -63,7 +63,7 @@
 		06873B772186681E002C2399 /* libcurl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libcurl.framework; path = Framework/libcurl.framework; sourceTree = "<group>"; };
 		06873B782186681E002C2399 /* libmeasurement_kit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libmeasurement_kit.framework; path = Framework/libmeasurement_kit.framework; sourceTree = "<group>"; };
 		06873B8421867066002C2399 /* MkTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MkTask.h; sourceTree = "<group>"; };
-		06873B8621867237002C2399 /* MkTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkTask.m; sourceTree = "<group>"; };
+		06873B8621867237002C2399 /* MkTask.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MkTask.mm; sourceTree = "<group>"; };
 		06873B88218678FA002C2399 /* MkTaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkTaskTests.m; sourceTree = "<group>"; };
 		06C805AA21864148009663B2 /* MkResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MkResources.h; sourceTree = "<group>"; };
 		06C805AC21864194009663B2 /* MkResources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MkResources.m; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				06141EBC2186555D00299D69 /* MkGeoIPLookup.h */,
 				06141EBE2186559C00299D69 /* MkGeoIPLookup.mm */,
 				06873B8421867066002C2399 /* MkTask.h */,
-				06873B8621867237002C2399 /* MkTask.m */,
+				06873B8621867237002C2399 /* MkTask.mm */,
 			);
 			path = mkall;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06141EBF2186559C00299D69 /* MkGeoIPLookup.mm in Sources */,
-				06873B8721867237002C2399 /* MkTask.m in Sources */,
+				06873B8721867237002C2399 /* MkTask.mm in Sources */,
 				06C805AD21864194009663B2 /* MkResources.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
