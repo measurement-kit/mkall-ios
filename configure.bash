@@ -3,14 +3,10 @@ set -ex
 prebuilt_repo=https://github.com/measurement-kit/prebuilt
 
 # Download all MK libraries in a single archive
-if [ ! -f Framework/.stamp ]; then (
-  set -ex
-  ./script/build/unix/install `./script/build/unix/all-deps.sh ios-`
-  ./script/build/unix/install ios-measurement-kit
-  ./script/build/unix/framework-ios `./script/build/unix/all-deps.sh`
-  ./script/build/unix/framework-ios measurement-kit
-  rm -rf MK_DIST  # cleanup temporary dir
-  touch Framework/.stamp
+if [ ! -f Frameworks/.stamp ]; then (
+  ./script/build/unix/make-ios-frameworks
+  rm -rf MK_DIST  # cleanup
+  touch Frameworks/.stamp
 ) fi
 
 # TODO(bassosimone): this should perhaps be a release of the assets themselves.
