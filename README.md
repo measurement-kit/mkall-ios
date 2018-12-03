@@ -9,3 +9,9 @@ All MK libraries for iOS. Integrate using Carthage.
 ```
 open mkall.xcodeproj
 ```
+
+## Testing whether we can build with Carthage
+
+```
+carthage build --no-skip-current --verbose
+```
