@@ -2,6 +2,8 @@
 set -ex
 prebuilt_repo=https://github.com/measurement-kit/prebuilt
 
+git submodule update --init  # Just in case
+
 # Download all MK libraries in a single archive
 if [ ! -f Frameworks/.stamp ]; then (
   ./script/build/unix/make-ios-frameworks

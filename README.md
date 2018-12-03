@@ -7,6 +7,5 @@ All MK libraries for iOS. Integrate using Carthage.
 ## Local development
 
 ```
-git submodule update --init  # optional, if you didn't `git clone --recursive`
 open mkall.xcodeproj
 ```
