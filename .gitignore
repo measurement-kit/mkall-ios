@@ -2,4 +2,5 @@
 /Carthage
 /Frameworks
 /build
-/mkall-ios-v*.tar.gz
+/mkall-0.3.7.framework.tgz
+/mkall.framework/
