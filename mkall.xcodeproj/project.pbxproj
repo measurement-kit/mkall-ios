@@ -13,7 +13,7 @@
 		06172DC6219315CC00DBB86B /* MKOrchestra.h in Headers */ = {isa = PBXBuildFile; fileRef = 06172DC5219315CC00DBB86B /* MKOrchestra.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06172DC8219317F600DBB86B /* MKUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06172DC7219317F600DBB86B /* MKUtil.h */; };
 		06172DCA21931C2B00DBB86B /* MKOrchestra.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06172DC921931C2B00DBB86B /* MKOrchestra.mm */; };
-		06172DCC2193259B00DBB86B /* MKOrchestraTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 06172DCB2193259B00DBB86B /* MKOrchestraTest.m */; };
+		06172DCC2193259B00DBB86B /* MKOrchestraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06172DCB2193259B00DBB86B /* MKOrchestraTests.m */; };
 		0622C68C21971D3900CD9AF5 /* curl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0622C68721971D3900CD9AF5 /* curl.framework */; };
 		0622C68D21971D3900CD9AF5 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0622C68821971D3900CD9AF5 /* openssl.framework */; };
 		0622C68E21971D3900CD9AF5 /* maxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0622C68921971D3900CD9AF5 /* maxminddb.framework */; };
@@ -48,7 +48,7 @@
 		06172DC5219315CC00DBB86B /* MKOrchestra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKOrchestra.h; sourceTree = "<group>"; };
 		06172DC7219317F600DBB86B /* MKUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKUtil.h; sourceTree = "<group>"; };
 		06172DC921931C2B00DBB86B /* MKOrchestra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKOrchestra.mm; sourceTree = "<group>"; };
-		06172DCB2193259B00DBB86B /* MKOrchestraTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKOrchestraTest.m; sourceTree = "<group>"; };
+		06172DCB2193259B00DBB86B /* MKOrchestraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKOrchestraTests.m; sourceTree = "<group>"; };
 		0622C68721971D3900CD9AF5 /* curl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = curl.framework; path = Frameworks/curl.framework; sourceTree = "<group>"; };
 		0622C68821971D3900CD9AF5 /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = Frameworks/openssl.framework; sourceTree = "<group>"; };
 		0622C68921971D3900CD9AF5 /* maxminddb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = maxminddb.framework; path = Frameworks/maxminddb.framework; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				06014DB721864BFB003DC2C8 /* MKGeoIPLookupTests.m */,
-				06172DCB2193259B00DBB86B /* MKOrchestraTest.m */,
+				06172DCB2193259B00DBB86B /* MKOrchestraTests.m */,
 				067463322185F8EC00D93CDE /* MKResourcesTests.m */,
 				06873B88218678FA002C2399 /* MKTaskTests.m */,
 				067463342185F8EC00D93CDE /* Info.plist */,
@@ -309,7 +309,7 @@
 				067463332185F8EC00D93CDE /* MKResourcesTests.m in Sources */,
 				06873B89218678FA002C2399 /* MKTaskTests.m in Sources */,
 				06014DB821864BFB003DC2C8 /* MKGeoIPLookupTests.m in Sources */,
-				06172DCC2193259B00DBB86B /* MKOrchestraTest.m in Sources */,
+				06172DCC2193259B00DBB86B /* MKOrchestraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
