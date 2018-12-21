@@ -10,11 +10,23 @@ All MK libraries for iOS. Integrate using Carthage or CocoaPods.
 open mkall.xcodeproj
 ```
 
-## Building framework with Carthage
+## Building framework with Carthage and publishing it
+
+Building:
 
 ```
 carthage build --no-skip-current --verbose
 ```
+
+Archiving:
+
+```
+./script/make-tarball
+```
+
+Then, bump the version number in `mkall.podspec`.
+
+Then, create a GitHub release, and publish there the archive.
 
 ## Integrate using CocoaPods
 

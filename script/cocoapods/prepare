@@ -2,9 +2,9 @@
 set -ex
 rm -rf mkall.framework
 baseurl="https://github.com/measurement-kit/mkall-ios"
-v="0.3.7"
+v=`cat VERSION`
 curl -fsSLO "$baseurl/releases/download/v${v}/mkall-${v}.framework.tgz"
-expsum="f7731908268a3d42f77fdbef4e9fdd2526517acdc71509cc7f2551a75194fb3e"
+expsum=`cat SHA256SUM`
 realsum=`shasum -a 256 mkall-${v}.framework.tgz | awk '{print $1}'`
 if [ "$expsum" != "$realsum" ]; then
   echo "FATAL: invalid framework checksum" 1>&2
