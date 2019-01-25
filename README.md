@@ -20,8 +20,10 @@ carthage build --no-skip-current --verbose
 
 Archiving:
 
+Make sure that `VERSION` contains the right version; then
+
 ```
-./script/make-tarball
+./script/make-framework
 ```
 
 Then, bump the version number in `mkall.podspec`.
