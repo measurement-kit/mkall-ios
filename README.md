@@ -28,7 +28,7 @@ Make sure that `VERSION` contains the right version; then
 
 Then, bump the version number in `mkall.podspec`.
 
-Then, create a GitHub release, and publish there the archive.
+Then, tag, create a GitHub release, and publish there the archive.
 
 ## Integrate using CocoaPods
 
