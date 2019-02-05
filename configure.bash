@@ -13,8 +13,8 @@ if [ ! -f Frameworks/.stamp ]; then (
 # Download generic assets (.mmdb files, ca-bundle.pem)
 if [ ! -f mkall/resources/.stamp ]; then (
   set -ex
-  version=20181203
-  shasum=01f7c8de625d8aae1239a1758097055a64aee60d69aadf0de372f204c36f35b5
+  version=20190205
+  shasum=e7826c2575bacbc1aeccf64f10bfdf128c7ab38e6f5d17876775937986499df7
   repodload=https://github.com/measurement-kit/generic-assets/releases/download
   curl -fsSLO $repodload/$version/generic-assets-$version.tar.gz
   real_shasum=`shasum -a 256 generic-assets-$version.tar.gz | awk '{print $1}'`
