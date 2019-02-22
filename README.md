@@ -4,6 +4,15 @@
 
 All MK libraries for iOS. Integrate using Carthage or CocoaPods.
 
+## Updating dependencies
+
+```
+cd script/build/unix
+git fetch
+git pull origin master
+cd -
+```
+
 ## Local development
 
 ```
