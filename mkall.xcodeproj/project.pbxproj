@@ -11,7 +11,7 @@
 		06141EBD2186555D00299D69 /* MKGeoIPLookup.h in Headers */ = {isa = PBXBuildFile; fileRef = 06141EBC2186555D00299D69 /* MKGeoIPLookup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06141EBF2186559C00299D69 /* MKGeoIPLookup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06141EBE2186559C00299D69 /* MKGeoIPLookup.mm */; };
 		06172DC6219315CC00DBB86B /* MKOrchestra.h in Headers */ = {isa = PBXBuildFile; fileRef = 06172DC5219315CC00DBB86B /* MKOrchestra.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06172DC8219317F600DBB86B /* MKUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 06172DC7219317F600DBB86B /* MKUtil.h */; };
+		06172DC8219317F600DBB86B /* MKUtil.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 06172DC7219317F600DBB86B /* MKUtil.hpp */; };
 		06172DCA21931C2B00DBB86B /* MKOrchestra.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06172DC921931C2B00DBB86B /* MKOrchestra.mm */; };
 		06172DCC2193259B00DBB86B /* MKOrchestraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06172DCB2193259B00DBB86B /* MKOrchestraTests.m */; };
 		0622C68C21971D3900CD9AF5 /* curl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0622C68721971D3900CD9AF5 /* curl.framework */; };
@@ -49,7 +49,7 @@
 		06141EBC2186555D00299D69 /* MKGeoIPLookup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKGeoIPLookup.h; sourceTree = "<group>"; };
 		06141EBE2186559C00299D69 /* MKGeoIPLookup.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKGeoIPLookup.mm; sourceTree = "<group>"; };
 		06172DC5219315CC00DBB86B /* MKOrchestra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKOrchestra.h; sourceTree = "<group>"; };
-		06172DC7219317F600DBB86B /* MKUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKUtil.h; sourceTree = "<group>"; };
+		06172DC7219317F600DBB86B /* MKUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MKUtil.hpp; sourceTree = "<group>"; };
 		06172DC921931C2B00DBB86B /* MKOrchestra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKOrchestra.mm; sourceTree = "<group>"; };
 		06172DCB2193259B00DBB86B /* MKOrchestraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKOrchestraTests.m; sourceTree = "<group>"; };
 		0622C68721971D3900CD9AF5 /* curl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = curl.framework; path = Frameworks/curl.framework; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				06873B8621867237002C2399 /* MKTask.mm */,
 				06172DC5219315CC00DBB86B /* MKOrchestra.h */,
 				06172DC921931C2B00DBB86B /* MKOrchestra.mm */,
-				06172DC7219317F600DBB86B /* MKUtil.h */,
+				06172DC7219317F600DBB86B /* MKUtil.hpp */,
 				0677E94521C9104B00D6253B /* MKVersion.h */,
 				0677E94421C9104B00D6253B /* MKVersion.mm */,
 			);
@@ -185,7 +185,7 @@
 				06172DC6219315CC00DBB86B /* MKOrchestra.h in Headers */,
 				06873B8521867066002C2399 /* MKTask.h in Headers */,
 				06C805AB21864148009663B2 /* MKResources.h in Headers */,
-				06172DC8219317F600DBB86B /* MKUtil.h in Headers */,
+				06172DC8219317F600DBB86B /* MKUtil.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

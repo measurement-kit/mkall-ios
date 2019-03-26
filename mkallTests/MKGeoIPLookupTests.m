@@ -33,25 +33,13 @@
     NSLog(@"probe_org: %@", s);
   }
   {
-    int64_t n = [results getProbeASN];
-    XCTAssert(n != 0);
-    NSLog(@"probe_asn: %lld", n);
+    NSString *s = [results getProbeASN];
+    XCTAssert(s != nil);
+    NSLog(@"probe_asn: %@", s);
   }
   {
-    double v = [results getBytesRecv];
-    XCTAssert(v > 0.0);
-    NSLog(@"bytes_recv: %f", v);
-  }
-  {
-    double v = [results getBytesSent];
-    XCTAssert(v > 0.0);
-    NSLog(@"bytes_sent: %f", v);
-  }
-  {
-    NSData *d = [results getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [results getLogs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
 }

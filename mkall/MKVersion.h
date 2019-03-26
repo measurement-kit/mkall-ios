@@ -8,16 +8,16 @@
 
 @interface MKVersion : NSObject
 
-// versionMK returns the most recent stable MK tag.
+/// versionMK returns the most recent stable MK tag.
 + (NSString *)versionMK;
 
-// versionMKGit returns the exact commit used to build MK.
+/// versionMKGit returns the exact commit used to build MK.
 + (NSString *)versionMKGit;
 
-// versionLibevent returns the version of libevent.
+/// versionLibevent returns the version of libevent.
 + (NSString *)versionLibevent;
 
-// versionOpenSSL returns the version of OpenSSL.
+/// versionOpenSSL returns the version of OpenSSL.
 + (NSString *)versionOpenSSL;
 
 @end  // interface MKVersion

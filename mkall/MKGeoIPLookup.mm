@@ -2,58 +2,50 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
-// Note: this file is Objective-C++ because otherwise the whole project
-// will compile as Objective-C and link will fail mentioning that several
-// C++ related symbols are missing (of course).
-
 #import "MKGeoIPLookup.h"
 
-#import "measurement_kit/vendor/mkgeoip.h"
+#import "measurement_kit/internal/geoiplookup/geoiplookup.h"
 
-#import "MKUtil.h"
+#import "MKUtil.hpp"
 
-MKUTIL_EXTEND_CLASS(MKGeoIPLookupResults, mkgeoip_lookup_results_t)
+MKUTIL_EXTEND_CLASS(MKGeoIPLookupResults, mk_geoiplookup_response_t)
 
 @implementation MKGeoIPLookupResults
 
-MKUTIL_INIT_WITH_POINTER(mkgeoip_lookup_results_t)
+MKUTIL_INIT_WITH_POINTER(mk_geoiplookup_response_t)
 
-MKUTIL_GET_BOOL(good, mkgeoip_lookup_results_good_v2)
+MKUTIL_GET_BOOL(good, mk_geoiplookup_response_good)
 
-MKUTIL_GET_DOUBLE(getBytesSent, mkgeoip_lookup_results_get_bytes_sent_v2)
+MKUTIL_GET_STRING(getProbeIP, mk_geoiplookup_response_ip)
 
-MKUTIL_GET_DOUBLE(getBytesRecv, mkgeoip_lookup_results_get_bytes_recv_v2)
+MKUTIL_GET_STRING(getProbeASN, mk_geoiplookup_response_asn)
 
-MKUTIL_GET_STRING(getProbeIP, mkgeoip_lookup_results_get_probe_ip_v2)
+MKUTIL_GET_STRING(getProbeCC, mk_geoiplookup_response_cc)
 
-MKUTIL_GET_INT(getProbeASN, mkgeoip_lookup_results_get_probe_asn_v2)
+MKUTIL_GET_STRING(getProbeOrg, mk_geoiplookup_response_org)
 
-MKUTIL_GET_STRING(getProbeCC, mkgeoip_lookup_results_get_probe_cc_v2)
+MKUTIL_GET_LOGS(getLogs, mk_geoiplookup_response_logs_size,
+                mk_geoiplookup_response_logs_at)
 
-MKUTIL_GET_STRING(getProbeOrg, mkgeoip_lookup_results_get_probe_org_v2)
-
-MKUTIL_GET_DATA(getLogs, mkgeoip_lookup_results_get_logs_binary_v2)
-
-MKUTIL_DEINIT(mkgeoip_lookup_results_delete)
+MKUTIL_DEINIT(mk_geoiplookup_response_delete)
 
 @end  // implementation MKGeoIPLookupResults
 
-MKUTIL_EXTEND_CLASS(MKGeoIPLookupSettings, mkgeoip_lookup_settings_t)
+MKUTIL_EXTEND_CLASS(MKGeoIPLookupSettings, mk_geoiplookup_request_t)
 
 @implementation MKGeoIPLookupSettings
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
-  mkgeoip_lookup_settings_new_nonnull,
-  mkgeoip_lookup_settings_set_ca_bundle_path_v2,
-  mkgeoip_lookup_settings_set_asn_db_path_v2,
-  mkgeoip_lookup_settings_set_country_db_path_v2)
+  mk_geoiplookup_request_new,
+  mk_geoiplookup_request_set_ca_bundle_path,
+  mk_geoiplookup_request_set_asn_db_path,
+  mk_geoiplookup_request_set_country_db_path)
 
-MKUTIL_SET_INT(setTimeout, mkgeoip_lookup_settings_set_timeout_v2)
+MKUTIL_SET_INT(setTimeout, mk_geoiplookup_request_set_timeout)
 
 MKUTIL_WRAP_GET_POINTER(MKGeoIPLookupResults, perform,
-  mkgeoip_lookup_settings_perform_nonnull)
+                        mk_geoiplookup_perform)
 
-MKUTIL_DEINIT(mkgeoip_lookup_settings_delete)
+MKUTIL_DEINIT(mk_geoiplookup_request_delete)
 
 @end  // implementation MKGeoIPLookupSettings
-

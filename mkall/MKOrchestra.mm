@@ -4,9 +4,9 @@
 
 #import "MKOrchestra.h"
 
-#import "measurement_kit/mkapi/orchestra.h"
+#import "measurement_kit/internal/mkapi/orchestra.h"
 
-#import "MKUtil.h"
+#import "MKUtil.hpp"
 
 MKUTIL_EXTEND_CLASS(MKOrchestraResult, mkapi_orchestra_result_t)
 
@@ -16,7 +16,7 @@ MKUTIL_INIT_WITH_POINTER(mkapi_orchestra_result_t)
 
 MKUTIL_GET_BOOL(good, mkapi_orchestra_result_good)
 
-MKUTIL_GET_DATA(getLogs, mkapi_orchestra_result_get_binary_logs)
+MKUTIL_GET_LOGS_FROM_DATA(getLogs, mkapi_orchestra_result_get_binary_logs)
 
 MKUTIL_DEINIT(mkapi_orchestra_result_delete)
 
@@ -64,7 +64,8 @@ MKUTIL_SET_STRING(addSupportedTest, mkapi_orchestra_client_add_supported_test)
 
 MKUTIL_SET_INT(setTimeout, mkapi_orchestra_client_set_timeout)
 
-MKUTIL_WRAP_GET_POINTER(MKOrchestraResult, sync, mkapi_orchestra_client_sync)
+MKUTIL_WRAP_GET_POINTER(MKOrchestraResult,
+  updateOrRegister, mkapi_orchestra_client_sync)
 
 MKUTIL_DEINIT(mkapi_orchestra_client_delete)
 

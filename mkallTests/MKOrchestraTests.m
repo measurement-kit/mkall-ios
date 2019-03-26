@@ -12,7 +12,20 @@
 
 @implementation MKOrchestraTest
 
+- (NSString*)getNonexistentSecretsFilePath {
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",
+                          NSHomeDirectory(),
+                          @"orchestrator_secret.json"];
+    XCTAssert(filePath != nil);
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    // Ignore the error. We want the file NOT to exist, if it happens to
+    // exist, because we want to test also the register case.
+    return filePath;
+}
+
 - (void)testMKResources {
+  NSString *secretsFilePath = [self getNonexistentSecretsFilePath];
   MKOrchestraClient *client = [[MKOrchestraClient alloc] init];
   [client setAvailableBandwidth:@"10110111"];
   [client setDeviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"];
@@ -25,29 +38,27 @@
   [client setProbeFamily:@"sbs"];
   [client setProbeTimezone:@"Europe/Rome"];
   [client setRegistryURL:@"https://registry.proteus.test.ooni.io"];
-  [client setSecretsFile:@".orchestra.json"];  // XXX
+  [client setSecretsFile:secretsFilePath];
   [client setSoftwareName:@"mkall-ios"];
   [client setSoftwareVersion:@"0.1.0"];
   [client addSupportedTest:@"web_connectivity"];
   [client addSupportedTest:@"ndt"];
   [client setTimeout:14];
   {
-    MKOrchestraResult *result = [client sync];
+    MKOrchestraResult *result = [client updateOrRegister];
+    XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSData *d = [result getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [result getLogs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
   [client setNetworkType:@"mobile"];
   {
-    MKOrchestraResult *result = [client sync];
+    MKOrchestraResult *result = [client updateOrRegister];
+    XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSData *d = [result getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [result getLogs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
 }
