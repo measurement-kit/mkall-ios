@@ -13,6 +13,9 @@ git pull origin master
 cd -
 ```
 
+Then commit the changes. (Doing local development resets the
+subrepository; this is a known bug.)
+
 ## Local development
 
 ```
