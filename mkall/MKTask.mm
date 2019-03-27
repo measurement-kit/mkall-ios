@@ -24,7 +24,7 @@ static NSString *marshal_settings(NSDictionary *settings) {
 
 @implementation MKTask
 
-+ (MKTask *)startNettest:(NSDictionary *)settings {
++ (MKTask *)start:(NSDictionary *)settings {
   NSString *str = marshal_settings(settings);
   if (str == nil) return nil;
   MKTask *task = [MKTask alloc];

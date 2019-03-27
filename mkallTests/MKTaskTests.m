@@ -13,27 +13,31 @@
 
 @implementation MKTaskTests
 
+- (void)logEvent:(NSDictionary *)event {
+  NSLog(@"%@", event);
+}
+
 - (void)testMKTaskNDT {
   NSDictionary *settings = @{
-    @"log_level": @"DEBUG",
+    @"log_level": @"INFO",
     @"name": @"Ndt",
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources getCABundlePath],
+      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
-  MKTask *task = [MKTask startNettest:settings];
+  MKTask *task = [MKTask start:settings];
   XCTAssert(task != nil);
   while (![task isDone]) {
     NSDictionary *event = [task waitForNextEvent];
     XCTAssert(event != nil);
-    NSLog(@"%@", event);
+    [self logEvent:event];
   }
 }
 
 - (void)testMKTaskWebConnectivity {
   NSDictionary *settings = @{
-    @"log_level": @"DEBUG",
+    @"log_level": @"INFO",
     @"name": @"WebConnectivity",
     @"inputs": @[
       @"http://www.kernel.org",
@@ -41,15 +45,15 @@
     ],
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources getCABundlePath],
+      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
-  MKTask *task = [MKTask startNettest:settings];
+  MKTask *task = [MKTask start:settings];
   XCTAssert(task != nil);
   while (![task isDone]) {
     NSDictionary *event = [task waitForNextEvent];
     XCTAssert(event != nil);
-    NSLog(@"%@", event);
+    [self logEvent:event];
   }
 }
 

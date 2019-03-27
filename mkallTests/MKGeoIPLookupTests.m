@@ -18,40 +18,28 @@
   MKGeoIPLookupResults *results = [settings perform];
   XCTAssert([results good]);
   {
-    NSString *s = [results getProbeIP];
+    NSString *s = [results probeIP];
     XCTAssert(s != nil);
     NSLog(@"probe_ip: %@", s);
   }
   {
-    NSString *s = [results getProbeCC];
+    NSString *s = [results probeCC];
     XCTAssert(s != nil);
     NSLog(@"probe_cc: %@", s);
   }
   {
-    NSString *s = [results getProbeOrg];
+    NSString *s = [results probeOrg];
     XCTAssert(s != nil);
     NSLog(@"probe_org: %@", s);
   }
   {
-    int64_t n = [results getProbeASN];
-    XCTAssert(n != 0);
-    NSLog(@"probe_asn: %lld", n);
+    NSString *s = [results probeASN];
+    XCTAssert(s != nil);
+    NSLog(@"probe_asn: %@", s);
   }
   {
-    double v = [results getBytesRecv];
-    XCTAssert(v > 0.0);
-    NSLog(@"bytes_recv: %f", v);
-  }
-  {
-    double v = [results getBytesSent];
-    XCTAssert(v > 0.0);
-    NSLog(@"bytes_sent: %f", v);
-  }
-  {
-    NSData *d = [results getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [results logs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
 }

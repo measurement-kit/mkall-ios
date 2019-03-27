@@ -6,13 +6,17 @@
 
 #import <Foundation/Foundation.h>
 
+/// MKResources provides the paths of embedded resources.
 @interface MKResources : NSObject
 
-+ (NSString *)getMMDBCountryPath;
+/// mmdbCountryPath returns the path to the MMDB country database.
++ (NSString *)mmdbCountryPath;
 
-+ (NSString *)getMMDBASNPath;
+/// mmdbBASNPath returns the path to the MMDB ASN database.
++ (NSString *)mmdbASNPath;
 
-+ (NSString *)getCABundlePath;
+/// caBundlePath returns the path to the embedded CA bundle.
++ (NSString *)caBundlePath;
 
 @end  // interface MKResources
 

@@ -13,9 +13,9 @@
 @implementation MKResourcesTests
 
 - (void)testMKResources {
-  XCTAssert([MKResources getMMDBCountryPath] != nil);
-  XCTAssert([MKResources getMMDBASNPath] != nil);
-  XCTAssert([MKResources getCABundlePath] != nil);
+  XCTAssert([MKResources mmdbCountryPath] != nil);
+  XCTAssert([MKResources mmdbASNPath] != nil);
+  XCTAssert([MKResources caBundlePath] != nil);
 }
 
 @end

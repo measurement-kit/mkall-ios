@@ -12,42 +12,53 @@
 
 @implementation MKOrchestraTest
 
+- (NSString*)getNonexistentSecretsFilePath {
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",
+                          NSHomeDirectory(),
+                          @"orchestrator_secret.json"];
+    XCTAssert(filePath != nil);
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    // Ignore the error. We want the file NOT to exist, if it happens to
+    // exist, because we want to test also the register case.
+    return filePath;
+}
+
 - (void)testMKResources {
-  MKOrchestraClient *client = [[MKOrchestraClient alloc] init];
-  [client setAvailableBandwidth:@"10110111"];
-  [client setDeviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"];
-  [client setLanguage:@"it_IT"];
-  [client setNetworkType:@"wifi"];
-  [client setPlatform:@"macos"];
+  NSString *secretsFilePath = [self getNonexistentSecretsFilePath];
+  MKOrchestraSettings *settings = [[MKOrchestraSettings alloc] init];
+  [settings setAvailableBandwidth:@"10110111"];
+  [settings setDeviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"];
+  [settings setLanguage:@"it_IT"];
+  [settings setNetworkType:@"wifi"];
+  [settings setPlatform:@"macos"];
   // Disabled so that the library will need to guess them
-  //[client setProbeASN:@"AS30722"];
-  //[client setProbeCC:@"IT"];
-  [client setProbeFamily:@"sbs"];
-  [client setProbeTimezone:@"Europe/Rome"];
-  [client setRegistryURL:@"https://registry.proteus.test.ooni.io"];
-  [client setSecretsFile:@".orchestra.json"];  // XXX
-  [client setSoftwareName:@"mkall-ios"];
-  [client setSoftwareVersion:@"0.1.0"];
-  [client addSupportedTest:@"web_connectivity"];
-  [client addSupportedTest:@"ndt"];
-  [client setTimeout:14];
+  //[settings setProbeASN:@"AS30722"];
+  //[settings setProbeCC:@"IT"];
+  [settings setProbeFamily:@"sbs"];
+  [settings setProbeTimezone:@"Europe/Rome"];
+  [settings setRegistryURL:@"https://registry.proteus.test.ooni.io"];
+  [settings setSecretsFile:secretsFilePath];
+  [settings setSoftwareName:@"mkall-ios"];
+  [settings setSoftwareVersion:@"0.1.0"];
+  [settings addSupportedTest:@"web_connectivity"];
+  [settings addSupportedTest:@"ndt"];
+  [settings setTimeout:14];
   {
-    MKOrchestraResult *result = [client sync];
+    MKOrchestraResults *result = [settings updateOrRegister];
+    XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSData *d = [result getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [result logs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
-  [client setNetworkType:@"mobile"];
+  [settings setNetworkType:@"mobile"];
   {
-    MKOrchestraResult *result = [client sync];
+    MKOrchestraResults *result = [settings updateOrRegister];
+    XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSData *d = [result getLogs];
-    NSString *s = [[NSString alloc] initWithData:d
-        encoding:NSUTF8StringEncoding];
-    XCTAssert(d != nil && s != nil);
+    NSString *s = [result logs];
+    XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
 }

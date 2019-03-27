@@ -6,17 +6,17 @@
 
 @implementation MKResources
 
-+ (NSString *)getMMDBCountryPath {
++ (NSString *)mmdbCountryPath {
   return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"country" ofType:@"mmdb"];
 }
 
-+ (NSString *)getMMDBASNPath{
++ (NSString *)mmdbASNPath{
   return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"asn" ofType:@"mmdb"];
 }
 
-+ (NSString *)getCABundlePath{
++ (NSString *)caBundlePath{
   return [[NSBundle bundleForClass:[MKResources class]]
     pathForResource:@"ca-bundle" ofType:@"pem"];
 }
