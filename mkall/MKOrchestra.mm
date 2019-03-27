@@ -8,9 +8,9 @@
 
 #import "MKUtil.hpp"
 
-MKUTIL_EXTEND_CLASS(MKOrchestraResult, mkapi_orchestra_result_t)
+MKUTIL_EXTEND_CLASS(MKOrchestraResults, mkapi_orchestra_result_t)
 
-@implementation MKOrchestraResult
+@implementation MKOrchestraResults
 
 MKUTIL_INIT_WITH_POINTER(mkapi_orchestra_result_t)
 
@@ -20,11 +20,11 @@ MKUTIL_GET_LOGS_FROM_DATA(logs, mkapi_orchestra_result_get_binary_logs)
 
 MKUTIL_DEINIT(mkapi_orchestra_result_delete)
 
-@end  // imlementation MKOrchestraResult
+@end  // imlementation MKOrchestraResults
 
-MKUTIL_EXTEND_CLASS(MKOrchestraClient, mkapi_orchestra_client_t)
+MKUTIL_EXTEND_CLASS(MKOrchestraSettings, mkapi_orchestra_client_t)
 
-@implementation MKOrchestraClient
+@implementation MKOrchestraSettings
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mkapi_orchestra_client_new,
@@ -64,9 +64,9 @@ MKUTIL_SET_STRING(addSupportedTest, mkapi_orchestra_client_add_supported_test)
 
 MKUTIL_SET_INT(setTimeout, mkapi_orchestra_client_set_timeout)
 
-MKUTIL_WRAP_GET_POINTER(MKOrchestraResult,
+MKUTIL_WRAP_GET_POINTER(MKOrchestraResults,
   updateOrRegister, mkapi_orchestra_client_sync)
 
 MKUTIL_DEINIT(mkapi_orchestra_client_delete)
 
-@end  // implementation MKOrchestraClient
+@end  // implementation MKOrchestraSettings

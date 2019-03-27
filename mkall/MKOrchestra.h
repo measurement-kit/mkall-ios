@@ -6,8 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
-/// MKOrchestraResult is the result of running a orchestra operation.
-@interface MKOrchestraResult : NSObject
+/// MKOrchestraResults is the result of running a orchestra operation.
+@interface MKOrchestraResults : NSObject
 
 /// good indicates whether the operation succeded.
 -(BOOL)good;
@@ -20,10 +20,10 @@
 
 -(void)deinit;
 
-@end  // interface MKOrchestraResult
+@end  // interface MKOrchestraResults
 
-/// MKOrchestraClient is a client for OONI orchestra.
-@interface MKOrchestraClient : NSObject
+/// MKOrchestraSettings contains settings for sending OONI orchestra requests.
+@interface MKOrchestraSettings : NSObject
 
 -(id)init;
 
@@ -85,14 +85,16 @@
 -(void)setTimeout:(int64_t)timeout;
 
 /// updateOrRegister will either register this probe with the OONI
-/// registry or update its state tracked by the registry.
+/// registry or update its state tracked by the registry, using the
+/// current value of the settings as tracked by this class.
 ///
 /// Whether the operation is register or update depends on the
-/// state stored inside the secret file.
--(MKOrchestraResult *)updateOrRegister;
+/// state stored inside the secret file: if we know we've registered
+/// in the past, we update, otherwise we register.
+-(MKOrchestraResults *)updateOrRegister;
 
 -(void)deinit;
 
-@end  // interface MKOrchestraClient
+@end  // interface MKOrchestraSettings
 
 #endif /* MKOrchestra_h */
