@@ -55,6 +55,10 @@
   return cxx_func(self.impl);                 \
 }
 
+// TODO(bassosimone): check whether we need to guarantee that
+// logs are base64 or we can assume MK's code to already provide
+// us with such guarantee.
+
 // MKUTIL_GET_LOGS defines a getter combining logs together, making
 // sure they are UTF-8 strings, and returning them as a single NSString
 // where each log line is separated by a newline.
