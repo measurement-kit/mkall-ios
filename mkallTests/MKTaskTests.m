@@ -23,7 +23,7 @@
     @"name": @"Ndt",
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources getCABundlePath],
+      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
   MKTask *task = [MKTask start:settings];
@@ -45,7 +45,7 @@
     ],
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources getCABundlePath],
+      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
   MKTask *task = [MKTask start:settings];

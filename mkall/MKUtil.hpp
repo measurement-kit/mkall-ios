@@ -124,9 +124,9 @@
 -(id)init {                                                                    \
   if ((self = [super init]) != nil) {                                          \
     if ((self.impl = cxx_ctor()) == NULL) abort();                             \
-    NSString *ca = [MKResources getCABundlePath];                              \
-    NSString *asn = [MKResources getMMDBASNPath];                              \
-    NSString *country = [MKResources getMMDBCountryPath];                      \
+    NSString *ca = [MKResources caBundlePath];                                 \
+    NSString *asn = [MKResources mmdbASNPath];                                 \
+    NSString *country = [MKResources mmdbCountryPath];                         \
     if (ca == nil || asn == nil || country == nil) {                           \
       abort();                                                                 \
     }                                                                          \

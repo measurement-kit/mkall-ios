@@ -18,27 +18,27 @@
   MKGeoIPLookupResults *results = [settings perform];
   XCTAssert([results good]);
   {
-    NSString *s = [results getProbeIP];
+    NSString *s = [results probeIP];
     XCTAssert(s != nil);
     NSLog(@"probe_ip: %@", s);
   }
   {
-    NSString *s = [results getProbeCC];
+    NSString *s = [results probeCC];
     XCTAssert(s != nil);
     NSLog(@"probe_cc: %@", s);
   }
   {
-    NSString *s = [results getProbeOrg];
+    NSString *s = [results probeOrg];
     XCTAssert(s != nil);
     NSLog(@"probe_org: %@", s);
   }
   {
-    NSString *s = [results getProbeASN];
+    NSString *s = [results probeASN];
     XCTAssert(s != nil);
     NSLog(@"probe_asn: %@", s);
   }
   {
-    NSString *s = [results getLogs];
+    NSString *s = [results logs];
     XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }

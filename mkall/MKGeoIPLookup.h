@@ -20,39 +20,39 @@
 /// more information on what have failed.
 -(BOOL)good;
 
-/// getProbeIP returns the probe IP.
+/// probeIP returns the probe IP.
 ///
 /// This will be either an IPv4 or IPv6 address. When we
 /// don't know the probe IP, we return 127.0.0.1. Note
 /// that the return value may also be nil.
--(NSString *)getProbeIP;
+-(NSString *)probeIP;
 
-/// getProbeASN returns the probe ASN.
+/// probeASN returns the probe ASN.
 ///
 /// This is a string like `AS{number}` where `{number`}
 /// is the ASN. When we don't know the ASN we return
 /// `AS0`. Note that the return value may also be nil.
--(NSString *)getProbeASN;
+-(NSString *)probeASN;
 
-/// getProbeCC returns the probe CC.
+/// probeCC returns the probe CC.
 ///
 /// This the two letter country name code, e.g. `IT`. When
 /// we don't know the country code, we return `ZZ`. Note
 /// that the return value may also be nil.
--(NSString *)getProbeCC;
+-(NSString *)probeCC;
 
-/// getProbeOrg returns the commercial name bound to the ASN.
+/// probeOrg returns the commercial name bound to the ASN.
 ///
 /// When we don't know it, we return an empty string. Note
 /// that the return value may also be nil.
--(NSString *)getProbeOrg;
+-(NSString *)probeOrg;
 
-/// getLogs returns the GeoIP lookup logs.
+/// logs returns the GeoIP lookup logs.
 ///
 /// The logs consist of zero or more UTF-8 lines providing
 /// information useful to debug why we failed. Note that the
 /// return value may also be nil.
--(NSString *)getLogs;
+-(NSString *)logs;
 
 -(void)deinit;
 

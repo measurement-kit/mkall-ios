@@ -16,7 +16,7 @@ MKUTIL_INIT_WITH_POINTER(mkapi_orchestra_result_t)
 
 MKUTIL_GET_BOOL(good, mkapi_orchestra_result_good)
 
-MKUTIL_GET_LOGS_FROM_DATA(getLogs, mkapi_orchestra_result_get_binary_logs)
+MKUTIL_GET_LOGS_FROM_DATA(logs, mkapi_orchestra_result_get_binary_logs)
 
 MKUTIL_DEINIT(mkapi_orchestra_result_delete)
 

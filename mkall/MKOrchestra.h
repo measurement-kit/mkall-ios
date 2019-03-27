@@ -12,11 +12,11 @@
 /// good indicates whether the operation succeded.
 -(BOOL)good;
 
-/// getLogs returns logs useful to understand why the operation failed.
+/// logs returns logs useful to understand why the operation failed.
 ///
 /// Logs consist of zero or more UTF-8 lines of text. In some cases
 /// this method may also return nil.
--(NSString *)getLogs;
+-(NSString *)logs;
 
 -(void)deinit;
 

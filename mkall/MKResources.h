@@ -9,14 +9,14 @@
 /// MKResources provides the paths of embedded resources.
 @interface MKResources : NSObject
 
-/// getMMDBCountryPath returns the path to the MMDB country database.
-+ (NSString *)getMMDBCountryPath;
+/// mmdbCountryPath returns the path to the MMDB country database.
++ (NSString *)mmdbCountryPath;
 
-/// getMMDBASNPath returns the path to the MMDB ASN database.
-+ (NSString *)getMMDBASNPath;
+/// mmdbBASNPath returns the path to the MMDB ASN database.
++ (NSString *)mmdbASNPath;
 
-/// getCABundlePath returns the path to the embedded CA bundle.
-+ (NSString *)getCABundlePath;
+/// caBundlePath returns the path to the embedded CA bundle.
++ (NSString *)caBundlePath;
 
 @end  // interface MKResources
 

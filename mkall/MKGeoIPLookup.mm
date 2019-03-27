@@ -16,15 +16,15 @@ MKUTIL_INIT_WITH_POINTER(mk_geoiplookup_response_t)
 
 MKUTIL_GET_BOOL(good, mk_geoiplookup_response_good)
 
-MKUTIL_GET_STRING(getProbeIP, mk_geoiplookup_response_ip)
+MKUTIL_GET_STRING(probeIP, mk_geoiplookup_response_ip)
 
-MKUTIL_GET_STRING(getProbeASN, mk_geoiplookup_response_asn)
+MKUTIL_GET_STRING(probeASN, mk_geoiplookup_response_asn)
 
-MKUTIL_GET_STRING(getProbeCC, mk_geoiplookup_response_cc)
+MKUTIL_GET_STRING(probeCC, mk_geoiplookup_response_cc)
 
-MKUTIL_GET_STRING(getProbeOrg, mk_geoiplookup_response_org)
+MKUTIL_GET_STRING(probeOrg, mk_geoiplookup_response_org)
 
-MKUTIL_GET_LOGS(getLogs, mk_geoiplookup_response_logs_size,
+MKUTIL_GET_LOGS(logs, mk_geoiplookup_response_logs_size,
                 mk_geoiplookup_response_logs_at)
 
 MKUTIL_DEINIT(mk_geoiplookup_response_delete)

@@ -48,7 +48,7 @@
     MKOrchestraResult *result = [client updateOrRegister];
     XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSString *s = [result getLogs];
+    NSString *s = [result logs];
     XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
@@ -57,7 +57,7 @@
     MKOrchestraResult *result = [client updateOrRegister];
     XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
-    NSString *s = [result getLogs];
+    NSString *s = [result logs];
     XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
