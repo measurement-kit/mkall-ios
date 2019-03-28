@@ -7,45 +7,45 @@
 #import "MKResources.h"
 #import "MKUtil.hpp"
 
-#import "mkex-collector.h"
+#import <measurement_kit/internal/collector/collector.h>
 
 MKUTIL_EXTEND_CLASS(
-  MKCollectorResubmitResults, mkex_collector_resubmit_response_t);
+  MKCollectorResubmitResults, mk_collector_resubmit_response_t);
 
 @implementation MKCollectorResubmitResults
 
-MKUTIL_INIT_WITH_POINTER(mkex_collector_resubmit_response_t)
+MKUTIL_INIT_WITH_POINTER(mk_collector_resubmit_response_t)
 
-MKUTIL_GET_BOOL(good, mkex_collector_resubmit_response_good)
+MKUTIL_GET_BOOL(good, mk_collector_resubmit_response_good)
 
 MKUTIL_GET_STRING(
-  updatedSerializedMeasurement, mkex_collector_resubmit_response_content)
+  updatedSerializedMeasurement, mk_collector_resubmit_response_content)
 
-MKUTIL_GET_LOGS(logs, mkex_collector_resubmit_response_logs_size,
-    mkex_collector_resubmit_response_logs_at)
+MKUTIL_GET_LOGS(logs, mk_collector_resubmit_response_logs_size,
+    mk_collector_resubmit_response_logs_at)
 
-MKUTIL_DEINIT(mkex_collector_resubmit_response_delete)
+MKUTIL_DEINIT(mk_collector_resubmit_response_delete)
 
 @end  // implementation MKCollectorResubmitResults
 
 MKUTIL_EXTEND_CLASS(
-  MKCollectorResubmitSettings, mkex_collector_resubmit_request_t);
+  MKCollectorResubmitSettings, mk_collector_resubmit_request_t);
 
 @implementation MKCollectorResubmitSettings
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
-  mkex_collector_resubmit_request_new,
-  mkex_collector_resubmit_request_set_ca_bundle_path,
+  mk_collector_resubmit_request_new,
+  mk_collector_resubmit_request_set_ca_bundle_path,
   [](auto, auto) {}, [](auto, auto) {})
 
 MKUTIL_SET_STRING(
-  setSerializedMeasurement, mkex_collector_resubmit_request_set_content)
+  setSerializedMeasurement, mk_collector_resubmit_request_set_content)
 
-MKUTIL_SET_INT(setTimeout, mkex_collector_resubmit_request_set_timeout)
+MKUTIL_SET_INT(setTimeout, mk_collector_resubmit_request_set_timeout)
 
 MKUTIL_WRAP_GET_POINTER(MKCollectorResubmitResults, perform,
-                        mkex_collector_resubmit)
+                        mk_collector_resubmit)
 
-MKUTIL_DEINIT(mkex_collector_resubmit_request_delete)
+MKUTIL_DEINIT(mk_collector_resubmit_request_delete)
 
 @end // implementation MKCollectorResubmitSettings

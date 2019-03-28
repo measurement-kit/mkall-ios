@@ -35,8 +35,6 @@
 		06C805AD21864194009663B2 /* MKResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C805AC21864194009663B2 /* MKResources.m */; };
 		06CCFFC2224B917A00655C60 /* MKCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 06CCFFC1224B917A00655C60 /* MKCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06CCFFC4224B93D400655C60 /* MKCollector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06CCFFC3224B93D400655C60 /* MKCollector.mm */; };
-		06D56A67224BF00500349D6B /* mkex-collector.h in Headers */ = {isa = PBXBuildFile; fileRef = 06D56A66224BF00500349D6B /* mkex-collector.h */; };
-		06D56A69224BF01B00349D6B /* mkex-collector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06D56A68224BF01B00349D6B /* mkex-collector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +79,6 @@
 		06C805AC21864194009663B2 /* MKResources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKResources.m; sourceTree = "<group>"; };
 		06CCFFC1224B917A00655C60 /* MKCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCollector.h; sourceTree = "<group>"; };
 		06CCFFC3224B93D400655C60 /* MKCollector.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKCollector.mm; sourceTree = "<group>"; };
-		06D56A66224BF00500349D6B /* mkex-collector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mkex-collector.h"; sourceTree = "<group>"; };
-		06D56A68224BF01B00349D6B /* mkex-collector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "mkex-collector.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +139,6 @@
 		067463262185F8EB00D93CDE /* mkall */ = {
 			isa = PBXGroup;
 			children = (
-				06D56A68224BF01B00349D6B /* mkex-collector.cpp */,
-				06D56A66224BF00500349D6B /* mkex-collector.h */,
 				06C805AF218642D5009663B2 /* resources */,
 				067463282185F8EB00D93CDE /* Info.plist */,
 				06C805AA21864148009663B2 /* MKResources.h */,
@@ -195,7 +189,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06D56A67224BF00500349D6B /* mkex-collector.h in Headers */,
 				06141EBD2186555D00299D69 /* MKGeoIPLookup.h in Headers */,
 				0677E94721C9104B00D6253B /* MKVersion.h in Headers */,
 				06172DC6219315CC00DBB86B /* MKOrchestra.h in Headers */,
@@ -327,7 +320,6 @@
 				06873B8721867237002C2399 /* MKTask.mm in Sources */,
 				0677E94621C9104B00D6253B /* MKVersion.mm in Sources */,
 				06C805AD21864194009663B2 /* MKResources.m in Sources */,
-				06D56A69224BF01B00349D6B /* mkex-collector.cpp in Sources */,
 				06172DCA21931C2B00DBB86B /* MKOrchestra.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
