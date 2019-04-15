@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "mkall"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
   s.summary = "Measurement Kit iOS libraries"
   s.author = "Simone Basso"
   s.homepage = "https://github.com/measurement-kit"
