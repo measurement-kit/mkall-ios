@@ -18,6 +18,9 @@
 /// account the information that has been returned by the collector.
 -(NSString *)updatedSerializedMeasurement;
 
+/// updatedReportID returns the updated report ID.
+-(NSString *)updatedReportID;
+
 /// logs contains logs useful to debug failures.
 -(NSString *)logs;
 

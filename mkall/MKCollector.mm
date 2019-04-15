@@ -21,6 +21,9 @@ MKUTIL_GET_BOOL(good, mk_collector_resubmit_response_good)
 MKUTIL_GET_STRING(
   updatedSerializedMeasurement, mk_collector_resubmit_response_content)
 
+MKUTIL_GET_STRING(
+  updatedReportID, mk_collector_resubmit_response_report_id)
+
 MKUTIL_GET_LOGS(logs, mk_collector_resubmit_response_logs_size,
     mk_collector_resubmit_response_logs_at)
 

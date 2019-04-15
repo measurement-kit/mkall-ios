@@ -37,6 +37,7 @@ static const char *serializedJSON = R"({
   XCTAssert([results good]);
   NSLog(@"good: %d", [results good]);
   NSLog(@"updatedMeasurement: %@", [results updatedSerializedMeasurement]);
+  NSLog(@"updatedReportID: %@", [results updatedReportID]);
   NSLog(@"logs: %@", [results logs]);
 }
 @end
