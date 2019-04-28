@@ -30,9 +30,8 @@ static const char *serializedJSON = R"({
 
 - (void)testResubmission {
   MKCollectorResubmitTask *settings = [
-    [MKCollectorResubmitTask alloc] init];
-  [settings setSerializedMeasurement:[
-    NSString stringWithUTF8String:serializedJSON]];
+    [MKCollectorResubmitTask alloc] initWithSerializedMeasurement:[
+      NSString stringWithUTF8String:serializedJSON]];
   MKCollectorResubmitResults *results = [settings perform];
   XCTAssert([results good]);
   NSLog(@"good: %d", [results good]);
@@ -40,4 +39,5 @@ static const char *serializedJSON = R"({
   NSLog(@"updatedReportID: %@", [results updatedReportID]);
   NSLog(@"logs: %@", [results logs]);
 }
+
 @end

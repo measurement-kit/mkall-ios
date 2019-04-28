@@ -34,7 +34,19 @@ MKUTIL_DEINIT(mk_collector_resubmit_response_delete)
 MKUTIL_EXTEND_CLASS(
   MKCollectorResubmitTask, mk_collector_resubmit_request_t);
 
+@interface MKCollectorResubmitTask ()
+-(instancetype)init;
+-(void)setSerializedMeasurement:(NSString *)measurement;
+@end // interface MKCollectorResubmitTask
+
 @implementation MKCollectorResubmitTask
+
+-(instancetype)initWithSerializedMeasurement:(NSString *)content {
+  if ((self = [self init]) != nil) {
+    [self setSerializedMeasurement:content];
+  }
+  return self;
+}
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mk_collector_resubmit_request_new,

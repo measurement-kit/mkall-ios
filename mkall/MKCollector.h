@@ -32,11 +32,9 @@
 /// a measurement to the OONI collector.
 @interface MKCollectorResubmitTask : NSObject
 
--(id)init;
-
-/// setSerializedMeasurement sets the serialized measurement that
-/// should be uploaded to the OONI collector.
--(void)setSerializedMeasurement:(NSString *)content;
+/// initWithSerializedMeasurement initializes the task using the
+/// serialized measurement that should be uploaded to the OONI collector.
+-(instancetype)initWithSerializedMeasurement:(NSString *)content;
 
 /// setTimeout sets the number of seconds after which an operation is aborted.
 -(void)setTimeout:(int64_t)timeout;
