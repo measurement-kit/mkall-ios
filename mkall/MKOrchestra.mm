@@ -22,9 +22,9 @@ MKUTIL_DEINIT(mkapi_orchestra_result_delete)
 
 @end  // imlementation MKOrchestraResults
 
-MKUTIL_EXTEND_CLASS(MKOrchestraSettings, mkapi_orchestra_client_t)
+MKUTIL_EXTEND_CLASS(MKOrchestraTask, mkapi_orchestra_client_t)
 
-@implementation MKOrchestraSettings
+@implementation MKOrchestraTask
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mkapi_orchestra_client_new,
@@ -69,4 +69,4 @@ MKUTIL_WRAP_GET_POINTER(MKOrchestraResults,
 
 MKUTIL_DEINIT(mkapi_orchestra_client_delete)
 
-@end  // implementation MKOrchestraSettings
+@end  // implementation MKOrchestraTask

@@ -26,7 +26,7 @@
 
 - (void)testMKResources {
   NSString *secretsFilePath = [self getNonexistentSecretsFilePath];
-  MKOrchestraSettings *settings = [[MKOrchestraSettings alloc] init];
+  MKOrchestraTask *settings = [[MKOrchestraTask alloc] init];
   [settings setAvailableBandwidth:@"10110111"];
   [settings setDeviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"];
   [settings setLanguage:@"it_IT"];

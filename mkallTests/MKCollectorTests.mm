@@ -29,8 +29,8 @@ static const char *serializedJSON = R"({
 @implementation MKCollectorTests
 
 - (void)testResubmission {
-  MKCollectorResubmitSettings *settings = [
-    [MKCollectorResubmitSettings alloc] init];
+  MKCollectorResubmitTask *settings = [
+    [MKCollectorResubmitTask alloc] init];
   [settings setSerializedMeasurement:[
     NSString stringWithUTF8String:serializedJSON]];
   MKCollectorResubmitResults *results = [settings perform];

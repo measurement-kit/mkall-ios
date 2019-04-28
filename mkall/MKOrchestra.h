@@ -22,8 +22,8 @@
 
 @end  // interface MKOrchestraResults
 
-/// MKOrchestraSettings contains settings for sending OONI orchestra requests.
-@interface MKOrchestraSettings : NSObject
+/// MKOrchestraTask is a sync task for performing OONI orchestra operations.
+@interface MKOrchestraTask : NSObject
 
 -(id)init;
 
@@ -95,6 +95,6 @@
 
 -(void)deinit;
 
-@end  // interface MKOrchestraSettings
+@end  // interface MKOrchestraTask
 
 #endif /* MKOrchestra_h */

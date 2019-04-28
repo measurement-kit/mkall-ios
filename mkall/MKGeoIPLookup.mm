@@ -31,9 +31,9 @@ MKUTIL_DEINIT(mk_geoiplookup_response_delete)
 
 @end  // implementation MKGeoIPLookupResults
 
-MKUTIL_EXTEND_CLASS(MKGeoIPLookupSettings, mk_geoiplookup_request_t)
+MKUTIL_EXTEND_CLASS(MKGeoIPLookupTask, mk_geoiplookup_request_t)
 
-@implementation MKGeoIPLookupSettings
+@implementation MKGeoIPLookupTask
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mk_geoiplookup_request_new,
@@ -48,4 +48,4 @@ MKUTIL_WRAP_GET_POINTER(MKGeoIPLookupResults, perform,
 
 MKUTIL_DEINIT(mk_geoiplookup_request_delete)
 
-@end  // implementation MKGeoIPLookupSettings
+@end  // implementation MKGeoIPLookupTask

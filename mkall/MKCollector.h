@@ -28,9 +28,9 @@
 
 @end  // interface MKCollectorResponse
 
-/// MKCollectorResubmitSettings contains the settings used for
-/// resubmitting a measurement to the OONI collector.
-@interface MKCollectorResubmitSettings : NSObject
+/// MKCollectorResubmitTask is a sync task that resubmits
+/// a measurement to the OONI collector.
+@interface MKCollectorResubmitTask : NSObject
 
 -(id)init;
 
@@ -47,6 +47,6 @@
 
 -(void)deinit;
 
-@end  // interface MKCollectorResubmitSettings
+@end  // interface MKCollectorResubmitTask
 
 #endif /* MKCollector_h */

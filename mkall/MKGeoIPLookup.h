@@ -58,8 +58,8 @@
 
 @end  // interface MKGeoIPLookupResults
 
-/// MKGeoIPLookupSettings contains the settings for a GeoIP lookup.
-@interface MKGeoIPLookupSettings : NSObject
+/// MKGeoIPLookupTask is a sync task performing a GeoIP lookup.
+@interface MKGeoIPLookupTask : NSObject
 
 -(id)init;
 
@@ -75,6 +75,6 @@
 
 -(void)deinit;
 
-@end  // interface MKGeoIPLookupSettings
+@end  // interface MKGeoIPLookupTask
 
 #endif /* MKGeoIPLookup_h */

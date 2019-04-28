@@ -13,7 +13,7 @@
 @implementation MKGeoIPLookupTests
 
 - (void)testMKResources {
-  MKGeoIPLookupSettings *settings = [[MKGeoIPLookupSettings alloc] init];
+  MKGeoIPLookupTask *settings = [[MKGeoIPLookupTask alloc] init];
   [settings setTimeout:17];
   MKGeoIPLookupResults *results = [settings perform];
   XCTAssert([results good]);

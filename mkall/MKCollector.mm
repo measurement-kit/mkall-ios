@@ -32,9 +32,9 @@ MKUTIL_DEINIT(mk_collector_resubmit_response_delete)
 @end  // implementation MKCollectorResubmitResults
 
 MKUTIL_EXTEND_CLASS(
-  MKCollectorResubmitSettings, mk_collector_resubmit_request_t);
+  MKCollectorResubmitTask, mk_collector_resubmit_request_t);
 
-@implementation MKCollectorResubmitSettings
+@implementation MKCollectorResubmitTask
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mk_collector_resubmit_request_new,
@@ -51,4 +51,4 @@ MKUTIL_WRAP_GET_POINTER(MKCollectorResubmitResults, perform,
 
 MKUTIL_DEINIT(mk_collector_resubmit_request_delete)
 
-@end // implementation MKCollectorResubmitSettings
+@end // implementation MKCollectorResubmitTask
