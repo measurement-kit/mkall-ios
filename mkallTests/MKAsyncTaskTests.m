@@ -4,20 +4,20 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MKTask.h"
+#import "MKAsyncTask.h"
 #import "MKResources.h"
 
-@interface MKTaskTests : XCTestCase
+@interface MKAsyncTaskTests : XCTestCase
 
 @end
 
-@implementation MKTaskTests
+@implementation MKAsyncTaskTests
 
 - (void)logEvent:(NSDictionary *)event {
   NSLog(@"%@", event);
 }
 
-- (void)testMKTaskNDT {
+- (void)testMKAsyncTaskNDT {
   NSDictionary *settings = @{
     @"log_level": @"INFO",
     @"name": @"Ndt",
@@ -26,7 +26,7 @@
       @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
-  MKTask *task = [MKTask start:settings];
+  MKAsyncTask *task = [MKAsyncTask start:settings];
   XCTAssert(task != nil);
   while (![task isDone]) {
     NSDictionary *event = [task waitForNextEvent];
@@ -35,7 +35,7 @@
   }
 }
 
-- (void)testMKTaskWebConnectivity {
+- (void)testMKAsyncTaskWebConnectivity {
   NSDictionary *settings = @{
     @"log_level": @"INFO",
     @"name": @"WebConnectivity",
@@ -48,7 +48,7 @@
       @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
-  MKTask *task = [MKTask start:settings];
+  MKAsyncTask *task = [MKAsyncTask start:settings];
   XCTAssert(task != nil);
   while (![task isDone]) {
     NSDictionary *event = [task waitForNextEvent];

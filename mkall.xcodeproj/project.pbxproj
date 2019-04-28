@@ -28,9 +28,9 @@
 		0677E94621C9104B00D6253B /* MKVersion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0677E94421C9104B00D6253B /* MKVersion.mm */; };
 		0677E94721C9104B00D6253B /* MKVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 0677E94521C9104B00D6253B /* MKVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0682BE96224BD8D100FB6DFC /* MKCollectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0682BE95224BD8D100FB6DFC /* MKCollectorTests.mm */; };
-		06873B8521867066002C2399 /* MKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 06873B8421867066002C2399 /* MKTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06873B8721867237002C2399 /* MKTask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06873B8621867237002C2399 /* MKTask.mm */; };
-		06873B89218678FA002C2399 /* MKTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06873B88218678FA002C2399 /* MKTaskTests.m */; };
+		06873B8521867066002C2399 /* MKAsyncTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 06873B8421867066002C2399 /* MKAsyncTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06873B8721867237002C2399 /* MKAsyncTask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06873B8621867237002C2399 /* MKAsyncTask.mm */; };
+		06873B89218678FA002C2399 /* MKAsyncTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06873B88218678FA002C2399 /* MKAsyncTaskTests.m */; };
 		06C805AB21864148009663B2 /* MKResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C805AA21864148009663B2 /* MKResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06C805AD21864194009663B2 /* MKResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C805AC21864194009663B2 /* MKResources.m */; };
 		06CCFFC2224B917A00655C60 /* MKCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 06CCFFC1224B917A00655C60 /* MKCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,9 +72,9 @@
 		0677E94421C9104B00D6253B /* MKVersion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MKVersion.mm; sourceTree = "<group>"; };
 		0677E94521C9104B00D6253B /* MKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKVersion.h; sourceTree = "<group>"; };
 		0682BE95224BD8D100FB6DFC /* MKCollectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKCollectorTests.mm; sourceTree = "<group>"; };
-		06873B8421867066002C2399 /* MKTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKTask.h; sourceTree = "<group>"; };
-		06873B8621867237002C2399 /* MKTask.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKTask.mm; sourceTree = "<group>"; };
-		06873B88218678FA002C2399 /* MKTaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKTaskTests.m; sourceTree = "<group>"; };
+		06873B8421867066002C2399 /* MKAsyncTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAsyncTask.h; sourceTree = "<group>"; };
+		06873B8621867237002C2399 /* MKAsyncTask.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MKAsyncTask.mm; sourceTree = "<group>"; };
+		06873B88218678FA002C2399 /* MKAsyncTaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAsyncTaskTests.m; sourceTree = "<group>"; };
 		06C805AA21864148009663B2 /* MKResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKResources.h; sourceTree = "<group>"; };
 		06C805AC21864194009663B2 /* MKResources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKResources.m; sourceTree = "<group>"; };
 		06CCFFC1224B917A00655C60 /* MKCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCollector.h; sourceTree = "<group>"; };
@@ -145,8 +145,8 @@
 				06C805AC21864194009663B2 /* MKResources.m */,
 				06141EBC2186555D00299D69 /* MKGeoIPLookup.h */,
 				06141EBE2186559C00299D69 /* MKGeoIPLookup.mm */,
-				06873B8421867066002C2399 /* MKTask.h */,
-				06873B8621867237002C2399 /* MKTask.mm */,
+				06873B8421867066002C2399 /* MKAsyncTask.h */,
+				06873B8621867237002C2399 /* MKAsyncTask.mm */,
 				06172DC5219315CC00DBB86B /* MKOrchestra.h */,
 				06172DC921931C2B00DBB86B /* MKOrchestra.mm */,
 				06172DC7219317F600DBB86B /* MKUtil.hpp */,
@@ -164,7 +164,7 @@
 				06014DB721864BFB003DC2C8 /* MKGeoIPLookupTests.m */,
 				06172DCB2193259B00DBB86B /* MKOrchestraTests.m */,
 				067463322185F8EC00D93CDE /* MKResourcesTests.m */,
-				06873B88218678FA002C2399 /* MKTaskTests.m */,
+				06873B88218678FA002C2399 /* MKAsyncTaskTests.m */,
 				067463342185F8EC00D93CDE /* Info.plist */,
 				0677E94221C90FED00D6253B /* MKVersionTests.m */,
 				0682BE95224BD8D100FB6DFC /* MKCollectorTests.mm */,
@@ -193,7 +193,7 @@
 				0677E94721C9104B00D6253B /* MKVersion.h in Headers */,
 				06172DC6219315CC00DBB86B /* MKOrchestra.h in Headers */,
 				06CCFFC2224B917A00655C60 /* MKCollector.h in Headers */,
-				06873B8521867066002C2399 /* MKTask.h in Headers */,
+				06873B8521867066002C2399 /* MKAsyncTask.h in Headers */,
 				06C805AB21864148009663B2 /* MKResources.h in Headers */,
 				06172DC8219317F600DBB86B /* MKUtil.hpp in Headers */,
 			);
@@ -317,7 +317,7 @@
 			files = (
 				06141EBF2186559C00299D69 /* MKGeoIPLookup.mm in Sources */,
 				06CCFFC4224B93D400655C60 /* MKCollector.mm in Sources */,
-				06873B8721867237002C2399 /* MKTask.mm in Sources */,
+				06873B8721867237002C2399 /* MKAsyncTask.mm in Sources */,
 				0677E94621C9104B00D6253B /* MKVersion.mm in Sources */,
 				06C805AD21864194009663B2 /* MKResources.m in Sources */,
 				06172DCA21931C2B00DBB86B /* MKOrchestra.mm in Sources */,
@@ -330,7 +330,7 @@
 			files = (
 				067463332185F8EC00D93CDE /* MKResourcesTests.m in Sources */,
 				0677E94321C90FED00D6253B /* MKVersionTests.m in Sources */,
-				06873B89218678FA002C2399 /* MKTaskTests.m in Sources */,
+				06873B89218678FA002C2399 /* MKAsyncTaskTests.m in Sources */,
 				06014DB821864BFB003DC2C8 /* MKGeoIPLookupTests.m in Sources */,
 				06172DCC2193259B00DBB86B /* MKOrchestraTests.m in Sources */,
 				0682BE96224BD8D100FB6DFC /* MKCollectorTests.mm in Sources */,
