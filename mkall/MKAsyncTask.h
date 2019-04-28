@@ -20,8 +20,8 @@
 /// returned value may also be nil.
 + (MKAsyncTask *)start:(NSDictionary *)data;
 
-/// isDone returns TRUE when the task is done, false otherwise.
-- (BOOL)isDone;
+/// done returns TRUE when the task is done, false otherwise.
+- (BOOL)done;
 
 /// waitForNextEvent blocks until the task emits the next event.
 ///

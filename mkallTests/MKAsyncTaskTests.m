@@ -28,7 +28,7 @@
   };
   MKAsyncTask *task = [MKAsyncTask start:settings];
   XCTAssert(task != nil);
-  while (![task isDone]) {
+  while (![task done]) {
     NSDictionary *event = [task waitForNextEvent];
     XCTAssert(event != nil);
     [self logEvent:event];
@@ -50,7 +50,7 @@
   };
   MKAsyncTask *task = [MKAsyncTask start:settings];
   XCTAssert(task != nil);
-  while (![task isDone]) {
+  while (![task done]) {
     NSDictionary *event = [task waitForNextEvent];
     XCTAssert(event != nil);
     [self logEvent:event];

@@ -33,7 +33,7 @@ static NSString *marshal_settings(NSDictionary *settings) {
   return (task.task != nil) ? task : nil;
 }
 
-- (BOOL)isDone {
+- (BOOL)done {
   return mk_task_is_done(self.task) ? TRUE : FALSE;
 }
 
