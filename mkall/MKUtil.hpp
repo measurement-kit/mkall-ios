@@ -112,20 +112,20 @@
 // MKUTIL_INIT_WITH_POINTER initializes a class with a pointer. This
 // macro should not be used outside of the implementation file to avoid
 // breaking the hiding of the internally used property.
-#define MKUTIL_INIT_WITH_POINTER(cxx_type) \
--(id)initWithPointer:(cxx_type *)value {   \
-  if (value == NULL) abort();              \
-  if ((self = [super init]) != nil) {      \
-    self.impl = value;                     \
-  }                                        \
-  return self;                             \
+#define MKUTIL_INIT_WITH_POINTER(cxx_type)          \
+-(instancetype)initWithPointer:(cxx_type *)value {  \
+  if (value == NULL) abort();                       \
+  if ((self = [super init]) != nil) {               \
+    self.impl = value;                              \
+  }                                                 \
+  return self;                                      \
 }
 
 // MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY defines an empty initialiser that
 // implicitly sets the path of the bundled resources.
 #define MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(                              \
     cxx_ctor, cxx_ca_setter, cxx_asn_setter, cxx_country_setter)               \
--(id)init {                                                                    \
+-(instancetype)init {                                                          \
   if ((self = [super init]) != nil) {                                          \
     if ((self.impl = cxx_ctor()) == NULL) abort();                             \
     NSString *ca = [MKResources caBundlePath];                                 \

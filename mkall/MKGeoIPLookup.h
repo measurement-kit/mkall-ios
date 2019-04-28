@@ -61,7 +61,7 @@
 /// MKGeoIPLookupTask is a sync task performing a GeoIP lookup.
 @interface MKGeoIPLookupTask : NSObject
 
--(id)init;
+-(instancetype)init;
 
 /// setTimeout sets the number of seconds after which a pending
 /// GeoIP lookup attempt is aborted by MK.

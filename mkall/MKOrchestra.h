@@ -25,7 +25,7 @@
 /// MKOrchestraTask is a sync task for performing OONI orchestra operations.
 @interface MKOrchestraTask : NSObject
 
--(id)init;
+-(instancetype)init;
 
 /// setAvailableBandwidth sets the available bandwidth.
 ///
