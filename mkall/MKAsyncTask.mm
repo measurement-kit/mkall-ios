@@ -4,7 +4,10 @@
 
 #import "MKAsyncTask.h"
 
+#import "measurement_kit/internal/vendor/json.hpp"
 #import "measurement_kit/ffi.h"
+
+#import "MKResources.h"
 
 @interface MKAsyncTask ()
 
@@ -22,6 +25,30 @@ static NSString *marshal_settings(NSDictionary *settings) {
   return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
+// updates settings adding resources and then starts the nettest task.
+static mk_task_t *updateSettingsAndStart(const char *settings) {
+  nlohmann::json doc;
+  try {
+    doc = nlohmann::json::parse(settings);
+  } catch (const std::exception &exc) {
+    NSLog(@"MKAsyncTask: cannot parse settings: %s", exc.what());
+    return nullptr;
+  }
+  nlohmann::json &o = doc["options"];
+  o["net/ca_bundle_path"] = [[MKResources caBundlePath] UTF8String];
+  o["geoip_asn_path"] = [[MKResources mmdbASNPath] UTF8String];
+  o["geoip_country_path"] = [[MKResources mmdbCountryPath] UTF8String];
+  std::string reserio;
+  try {
+    reserio = doc.dump();
+  } catch (const std::exception &exc) {
+    NSLog(@"MKAsyncTask: cannot reserialize settings: %s", exc.what());
+    return nullptr;
+  }
+  NSLog(@"MKAsyncTask: settings passed to MK: %s", reserio.c_str());
+  return mk_task_start(reserio.c_str());
+}
+
 @implementation MKAsyncTask
 
 + (MKAsyncTask *)start:(NSDictionary *)settings {
@@ -29,7 +56,7 @@ static NSString *marshal_settings(NSDictionary *settings) {
   if (str == nil) return nil;
   MKAsyncTask *task = [MKAsyncTask alloc];
   if (task == nil) return nil;
-  task.task = mk_nettest_start([str UTF8String]);
+  task.task = updateSettingsAndStart([str UTF8String]);
   return (task.task != nil) ? task : nil;
 }
 

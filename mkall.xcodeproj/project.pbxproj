@@ -31,7 +31,7 @@
 		06873B8521867066002C2399 /* MKAsyncTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 06873B8421867066002C2399 /* MKAsyncTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06873B8721867237002C2399 /* MKAsyncTask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06873B8621867237002C2399 /* MKAsyncTask.mm */; };
 		06873B89218678FA002C2399 /* MKAsyncTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06873B88218678FA002C2399 /* MKAsyncTaskTests.m */; };
-		06C805AB21864148009663B2 /* MKResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C805AA21864148009663B2 /* MKResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06C805AB21864148009663B2 /* MKResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 06C805AA21864148009663B2 /* MKResources.h */; };
 		06C805AD21864194009663B2 /* MKResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C805AC21864194009663B2 /* MKResources.m */; };
 		06CCFFC2224B917A00655C60 /* MKCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 06CCFFC1224B917A00655C60 /* MKCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06CCFFC4224B93D400655C60 /* MKCollector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06CCFFC3224B93D400655C60 /* MKCollector.mm */; };
