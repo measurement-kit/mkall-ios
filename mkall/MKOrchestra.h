@@ -69,12 +69,6 @@
 /// setRegistryURL sets the URL of the OONI registry.
 -(void)setRegistryURL:(NSString *)value;
 
-/// setSecretsFile sets the path of the file where to store secrets.
-///
-/// This file is required to remember whether this probe has
-/// already logged in with the registry or not.
--(void)setSecretsFile:(NSString *)value;
-
 /// setTimeout sets the number of seconds after which an orchestra
 /// operation by this client will be aborted.
 -(void)setTimeout:(int64_t)timeout;
