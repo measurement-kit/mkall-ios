@@ -25,19 +25,23 @@
 /// MKOrchestraTask is a sync task for performing OONI orchestra operations.
 @interface MKOrchestraTask : NSObject
 
--(instancetype)init;
+/// initializes a sync task for communicating with the OONI orchestra backend.
+/// @param softwareName the name of the application.
+/// @param softwareVersion the version of the application.
+/// @param supportedTests the array of supported tests.
+/// @param deviceToken the device unique token.
+/// @param secretsFile the file where to store OONI orchestra secrets.
+-(instancetype)initWithSoftwareName:(NSString *)softwareName
+                    softwareVersion:(NSString *)softwareVersion
+                     supportedTests:(NSArray<NSString *> *)supportedTests
+                        deviceToken:(NSString *)deviceToken
+                        secretsFile:(NSString *)secretsFile;
 
 /// setAvailableBandwidth sets the available bandwidth.
 ///
 /// This is the amount of bandwidth that a probe is willing
 /// to consume for nettests.
 -(void)setAvailableBandwidth:(NSString *)value;
-
-/// setDeviceToken sets the device token.
-///
-/// This is a unique, per-device identifier that is required
-/// to later send push notifications to a device.
--(void)setDeviceToken:(NSString *)value;
 
 /// setLanguage sets the language used on the device.
 -(void)setLanguage:(NSString *)value;
@@ -71,15 +75,6 @@
 /// already logged in with the registry or not.
 -(void)setSecretsFile:(NSString *)value;
 
-/// setSoftwareName sets the name of the application.
--(void)setSoftwareName:(NSString *)value;
-
-/// setSoftwareVersion sets the version of the application.
--(void)setSoftwareVersion:(NSString *)value;
-
-/// addSupportedTest adds a test to the set of supported tests.
--(void)addSupportedTest:(NSString *)value;
-
 /// setTimeout sets the number of seconds after which an orchestra
 /// operation by this client will be aborted.
 -(void)setTimeout:(int64_t)timeout;
@@ -96,5 +91,4 @@
 -(void)deinit;
 
 @end  // interface MKOrchestraTask
-
 #endif /* MKOrchestra_h */

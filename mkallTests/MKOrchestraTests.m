@@ -26,9 +26,14 @@
 
 - (void)testMKResources {
   NSString *secretsFilePath = [self getNonexistentSecretsFilePath];
-  MKOrchestraTask *settings = [[MKOrchestraTask alloc] init];
+  MKOrchestraTask *settings = [[MKOrchestraTask alloc]
+      initWithSoftwareName:@"mkall-ios"
+           softwareVersion:@"0.1.0"
+            supportedTests:@[@"ndt", @"web_connectivity"]
+               deviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"
+               secretsFile:secretsFilePath
+  ];
   [settings setAvailableBandwidth:@"10110111"];
-  [settings setDeviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"];
   [settings setLanguage:@"it_IT"];
   [settings setNetworkType:@"wifi"];
   [settings setPlatform:@"macos"];
@@ -38,11 +43,6 @@
   [settings setProbeFamily:@"sbs"];
   [settings setProbeTimezone:@"Europe/Rome"];
   [settings setRegistryURL:@"https://registry.proteus.test.ooni.io"];
-  [settings setSecretsFile:secretsFilePath];
-  [settings setSoftwareName:@"mkall-ios"];
-  [settings setSoftwareVersion:@"0.1.0"];
-  [settings addSupportedTest:@"web_connectivity"];
-  [settings addSupportedTest:@"ndt"];
   [settings setTimeout:14];
   {
     MKOrchestraResults *result = [settings updateOrRegister];

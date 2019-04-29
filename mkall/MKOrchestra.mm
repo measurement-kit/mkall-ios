@@ -24,7 +24,32 @@ MKUTIL_DEINIT(mkapi_orchestra_result_delete)
 
 MKUTIL_EXTEND_CLASS(MKOrchestraTask, mkapi_orchestra_client_t)
 
+@interface MKOrchestraTask ()
+-(instancetype)init;
+-(void)setDeviceToken:(NSString *)value;
+-(void)setSoftwareName:(NSString *)value;
+-(void)setSoftwareVersion:(NSString *)value;
+-(void)addSupportedTest:(NSString *)value;
+@end // interface MKOrchestraTask
+
 @implementation MKOrchestraTask
+
+-(instancetype)initWithSoftwareName:(NSString *)softwareName
+                    softwareVersion:(NSString *)softwareVersion
+                     supportedTests:(NSArray<NSString *> *)supportedTests
+                        deviceToken:(NSString *)deviceToken
+                        secretsFile:(NSString *)secretsFile {
+  if ((self = [self init]) != nil) {
+    [self setSoftwareName:softwareName];
+    [self setSoftwareVersion:softwareVersion];
+    for (NSString *s in supportedTests) {
+      [self addSupportedTest:s];
+    }
+    [self setDeviceToken:deviceToken];
+    [self setSecretsFile:secretsFile];
+  }
+  return self;
+}
 
 MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
   mkapi_orchestra_client_new,
