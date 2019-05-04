@@ -44,6 +44,12 @@ MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
 MKUTIL_SET_STRING(
   setSerializedMeasurement, mk_collector_resubmit_request_set_content)
 
+MKUTIL_SET_STRING(
+  setSoftwareName, mk_collector_resubmit_request_set_software_name)
+
+MKUTIL_SET_STRING(
+  setSoftwareVersion, mk_collector_resubmit_request_set_software_version)
+
 MKUTIL_SET_INT(setTimeout, mk_collector_resubmit_request_set_timeout)
 
 MKUTIL_WRAP_GET_POINTER(MKCollectorResubmitResults, perform,

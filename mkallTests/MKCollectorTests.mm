@@ -28,13 +28,32 @@ static const char *serializedJSON = R"({
 
 @implementation MKCollectorTests
 
-- (void)testResubmission {
+- (void)testResubmissionGood {
   MKCollectorResubmitSettings *settings = [
     [MKCollectorResubmitSettings alloc] init];
   [settings setSerializedMeasurement:[
     NSString stringWithUTF8String:serializedJSON]];
+  [settings setSoftwareName:@"ooniprobe-ios"];
+  [settings setSoftwareVersion:@"2.0.1"];
   MKCollectorResubmitResults *results = [settings perform];
   XCTAssert([results good]);
+  NSLog(@"good: %d", [results good]);
+  NSLog(@"updatedMeasurement: %@", [results updatedSerializedMeasurement]);
+  NSLog(@"updatedReportID: %@", [results updatedReportID]);
+  NSLog(@"logs: %@", [results logs]);
+}
+
+// Ensure that we cannot resubmit if we're ooniprobe-android 2.0.0. This
+// is mainly to be sure that we can set software name and version.
+- (void)testResubmissionBad {
+  MKCollectorResubmitSettings *settings = [
+    [MKCollectorResubmitSettings alloc] init];
+  [settings setSerializedMeasurement:[
+    NSString stringWithUTF8String:serializedJSON]];
+  [settings setSoftwareName:@"ooniprobe-android"];
+  [settings setSoftwareVersion:@"2.0.0"];
+  MKCollectorResubmitResults *results = [settings perform];
+  XCTAssert(![results good]);
   NSLog(@"good: %d", [results good]);
   NSLog(@"updatedMeasurement: %@", [results updatedSerializedMeasurement]);
   NSLog(@"updatedReportID: %@", [results updatedReportID]);
