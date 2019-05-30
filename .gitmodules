@@ -1,3 +1,0 @@
-[submodule "script/build/ios"]
-	path = script/build/ios
-	url = https://github.com/measurement-kit/script-build-ios

@@ -1,0 +1,59 @@
+#!/bin/bash
+set -e
+
+mkframework() {
+  local prebuiltdir=$1
+  local frameworkdir=$2
+  local headersdir=$3
+  rm -rf $frameworkdir
+  install -d $frameworkdir
+  local framework="$(basename $frameworkdir | sed 's|\.framework$||g')"
+  echo "* Creating $frameworkdir/$framework"
+  for archdir in $prebuiltdir/{arm64,armv7s,i386,x86_64}; do
+    local all_libs="$(find $archdir/lib -type f -name \*.a)"
+    libtool -static $all_libs -o "$frameworkdir/$(basename $archdir).a"
+  done
+  lipo -create -output "$frameworkdir/$framework" $frameworkdir/*.a
+  rm -f $frameworkdir/*.a
+  echo "* Copying machine dependent headers"
+  install -d $frameworkdir/Headers/aaa_mkarch
+  for archdir in $prebuiltdir/{arm64,armv7s,i386,x86_64}; do
+    cp -Rp $archdir/$headersdir $frameworkdir/Headers/aaa_mkarch/$(basename $archdir)
+  done
+  echo "* Creating machine independent headers"
+  for archdir in $frameworkdir/Headers/aaa_mkarch/*; do
+    for hdr in $(cd $archdir && find . -type f | sed 's@^\.\/@@g'); do
+      local oh=$frameworkdir/Headers/$hdr
+      install -d $(dirname $oh)
+      touch $frameworkdir/Headers/$hdr
+      chmod 644 $oh
+      echo "#if defined __arm64__"                           >> $oh
+      echo "# include \"$framework/aaa_mkarch/arm64/$hdr\""  >> $oh
+      echo "#elif defined __arm__"                           >> $oh
+      echo "# include \"$framework/aaa_mkarch/armv7s/$hdr\"" >> $oh
+      echo "#elif defined __x86_64__"                        >> $oh
+      echo "# include \"$framework/aaa_mkarch/x86_64/$hdr\"" >> $oh
+      echo "#elif defined __i386__"                          >> $oh
+      echo "# include \"$framework/aaa_mkarch/i386/$hdr\""   >> $oh
+      echo "#else"                                           >> $oh
+      echo "# error \"No headers for your ARCH\""            >> $oh
+      echo "#endif"                                          >> $oh
+      arch_hdrs="$arch_hdrs $hdr"
+    done
+    break  # Assumption: no package installs headers only for some archs
+  done
+}
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 packages-basedir" 1>&2
+  exit 1
+fi
+topdir=$(cd $(dirname $0) && pwd -P)
+outdir=Frameworks
+rm -rf $outdir
+mkframework $1/ios-libmaxminddb $outdir/maxminddb.framework include
+mkframework $1/ios-libressl $outdir/openssl.framework include/openssl
+mkframework $1/ios-libevent $outdir/event2.framework include/event2
+mkframework $1/ios-curl $outdir/curl.framework include/curl
+mkframework $1/ios-measurement-kit $outdir/measurement_kit.framework           \
+    include/measurement_kit
