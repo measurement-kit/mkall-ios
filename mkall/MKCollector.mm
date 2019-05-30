@@ -36,14 +36,17 @@ MKUTIL_EXTEND_CLASS(
 
 @interface MKCollectorResubmitTask ()
 -(instancetype)init;
--(void)setSerializedMeasurement:(NSString *)measurement;
 @end // interface MKCollectorResubmitTask
 
 @implementation MKCollectorResubmitTask
 
--(instancetype)initWithSerializedMeasurement:(NSString *)content {
+-(instancetype)initWithSerializedMeasurement:(NSString *)content
+                                softwareName:(NSString *)softwareName
+                             softwareVersion:(NSString *)softwareVersion {
   if ((self = [self init]) != nil) {
     [self setSerializedMeasurement:content];
+    [self setSoftwareName:softwareName];
+    [self setSoftwareVersion:softwareVersion];
   }
   return self;
 }
@@ -55,6 +58,12 @@ MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
 
 MKUTIL_SET_STRING(
   setSerializedMeasurement, mk_collector_resubmit_request_set_content)
+
+MKUTIL_SET_STRING(
+  setSoftwareName, mk_collector_resubmit_request_set_software_name)
+
+MKUTIL_SET_STRING(
+  setSoftwareVersion, mk_collector_resubmit_request_set_software_version)
 
 MKUTIL_SET_INT(setTimeout, mk_collector_resubmit_request_set_timeout)
 

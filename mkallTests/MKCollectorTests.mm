@@ -10,6 +10,7 @@
 
 @end
 
+// This is a C++11 raw string; hence this file is ObjectiveC++.
 static const char *serializedJSON = R"({
   "data_format_version": "0.2.0",
   "input": "torproject.org",
@@ -28,12 +29,30 @@ static const char *serializedJSON = R"({
 
 @implementation MKCollectorTests
 
-- (void)testResubmission {
-  MKCollectorResubmitTask *settings = [
-    [MKCollectorResubmitTask alloc] initWithSerializedMeasurement:[
-      NSString stringWithUTF8String:serializedJSON]];
-  MKCollectorResubmitResults *results = [settings perform];
+- (void)testResubmissionGood {
+  MKCollectorResubmitTask *task = [[MKCollectorResubmitTask alloc]
+      initWithSerializedMeasurement:[NSString stringWithUTF8String:serializedJSON]
+                       softwareName:@"ooniprobe-ios"
+                    softwareVersion:@"2.0.1"
+  ];
+  MKCollectorResubmitResults *results = [task perform];
   XCTAssert([results good]);
+  NSLog(@"good: %d", [results good]);
+  NSLog(@"updatedMeasurement: %@", [results updatedSerializedMeasurement]);
+  NSLog(@"updatedReportID: %@", [results updatedReportID]);
+  NSLog(@"logs: %@", [results logs]);
+}
+
+// Ensure that we cannot resubmit if we're ooniprobe-android 2.0.0. This
+// is mainly to be sure that we can set software name and version.
+- (void)testResubmissionBad {
+  MKCollectorResubmitTask *task = [[MKCollectorResubmitTask alloc]
+      initWithSerializedMeasurement:[NSString stringWithUTF8String:serializedJSON]
+                       softwareName:@"ooniprobe-android"
+                    softwareVersion:@"2.0.0"
+  ];
+  MKCollectorResubmitResults *results = [task perform];
+  XCTAssert(![results good]);
   NSLog(@"good: %d", [results good]);
   NSLog(@"updatedMeasurement: %@", [results updatedSerializedMeasurement]);
   NSLog(@"updatedReportID: %@", [results updatedReportID]);

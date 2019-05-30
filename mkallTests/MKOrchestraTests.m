@@ -24,37 +24,37 @@
     return filePath;
 }
 
-- (void)testMKResources {
+- (void)testOrchestrate {
   NSString *secretsFilePath = [self getNonexistentSecretsFilePath];
-  MKOrchestraTask *settings = [[MKOrchestraTask alloc]
+  MKOrchestraTask *task = [[MKOrchestraTask alloc]
       initWithSoftwareName:@"mkall-ios"
            softwareVersion:@"0.1.0"
             supportedTests:@[@"ndt", @"web_connectivity"]
                deviceToken:@"5f2c761f-2e98-43aa-b9ea-3d34cceaab15"
                secretsFile:secretsFilePath
   ];
-  [settings setAvailableBandwidth:@"10110111"];
-  [settings setLanguage:@"it_IT"];
-  [settings setNetworkType:@"wifi"];
-  [settings setPlatform:@"macos"];
+  [task setAvailableBandwidth:@"10110111"];
+  [task setLanguage:@"it_IT"];
+  [task setNetworkType:@"wifi"];
+  [task setPlatform:@"macos"];
   // Disabled so that the library will need to guess them
-  //[settings setProbeASN:@"AS30722"];
-  //[settings setProbeCC:@"IT"];
-  [settings setProbeFamily:@"sbs"];
-  [settings setProbeTimezone:@"Europe/Rome"];
-  [settings setRegistryURL:@"https://registry.proteus.test.ooni.io"];
-  [settings setTimeout:14];
+  //[task setProbeASN:@"AS30722"];
+  //[task setProbeCC:@"IT"];
+  [task setProbeFamily:@"sbs"];
+  [task setProbeTimezone:@"Europe/Rome"];
+  [task setRegistryURL:@"https://registry.proteus.test.ooni.io"];
+  [task setTimeout:14];
   {
-    MKOrchestraResults *result = [settings updateOrRegister];
+    MKOrchestraResults *result = [task updateOrRegister];
     XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
     NSString *s = [result logs];
     XCTAssert(s != nil);
     NSLog(@"logs: %@", s);
   }
-  [settings setNetworkType:@"mobile"];
+  [task setNetworkType:@"mobile"];
   {
-    MKOrchestraResults *result = [settings updateOrRegister];
+    MKOrchestraResults *result = [task updateOrRegister];
     XCTAssert([result good]);
     NSLog(@"Good: %d", [result good]);
     NSString *s = [result logs];
