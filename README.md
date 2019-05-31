@@ -27,23 +27,21 @@ open mkall.xcodeproj
 
 ## Building framework with Carthage and publishing it
 
-Building:
+1. make sure that [mkall/Info.plist](mkall/Info.plist) is current;
 
-```
-carthage build --no-skip-current --verbose
-```
+2. build using ```./build.sh```;
 
-Archiving:
+3. commit;
 
-Make sure that `VERSION` contains the right version; then
+4. tag;
 
-```
-./script/make-framework
-```
+5. push;
 
-Then, bump the version number in `mkall.podspec`.
+6. create a GitHub release;
 
-Then, tag, create a GitHub release, and publish there the archive.
+7. publish the archive into the release.
+
+We'll use the version number in [mkall/Info.plist](mkall/Info.plist).
 
 ## Integrate using CocoaPods
 
