@@ -38,7 +38,6 @@ mkframework() {
       echo "#else"                                           >> $oh
       echo "# error \"No headers for your ARCH\""            >> $oh
       echo "#endif"                                          >> $oh
-      arch_hdrs="$arch_hdrs $hdr"
     done
     break  # Assumption: no package installs headers only for some archs
   done
