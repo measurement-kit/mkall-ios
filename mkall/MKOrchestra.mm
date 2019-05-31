@@ -26,10 +26,6 @@ MKUTIL_EXTEND_CLASS(MKOrchestraTask, mkapi_orchestra_client_t)
 
 @interface MKOrchestraTask ()
 -(instancetype)init;
--(void)setDeviceToken:(NSString *)value;
--(void)setSoftwareName:(NSString *)value;
--(void)setSoftwareVersion:(NSString *)value;
--(void)addSupportedTest:(NSString *)value;
 @end // interface MKOrchestraTask
 
 @implementation MKOrchestraTask

@@ -5,7 +5,6 @@
 #import <XCTest/XCTest.h>
 
 #import "MKAsyncTask.h"
-#import "MKResources.h"
 
 @interface MKAsyncTaskTests : XCTestCase
 
@@ -23,7 +22,6 @@
     @"name": @"Ndt",
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
   MKAsyncTask *task = [MKAsyncTask start:settings];
@@ -45,7 +43,6 @@
     ],
     @"options": @{
       @"no_file_report": @YES,
-      @"net/ca_bundle_path": [MKResources caBundlePath],
     }
   };
   MKAsyncTask *task = [MKAsyncTask start:settings];

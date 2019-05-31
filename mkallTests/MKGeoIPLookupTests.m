@@ -13,9 +13,9 @@
 @implementation MKGeoIPLookupTests
 
 - (void)testMKResources {
-  MKGeoIPLookupTask *settings = [[MKGeoIPLookupTask alloc] init];
-  [settings setTimeout:17];
-  MKGeoIPLookupResults *results = [settings perform];
+  MKGeoIPLookupTask *task = [[MKGeoIPLookupTask alloc] init];
+  [task setTimeout:17];
+  MKGeoIPLookupResults *results = [task perform];
   XCTAssert([results good]);
   {
     NSString *s = [results probeIP];

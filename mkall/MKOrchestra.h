@@ -43,6 +43,12 @@
 /// to consume for nettests.
 -(void)setAvailableBandwidth:(NSString *)value;
 
+/// setDeviceToken sets the device token.
+///
+/// This is a unique, per-device identifier that is required
+/// to later send push notifications to a device.
+-(void)setDeviceToken:(NSString *)value;
+
 /// setLanguage sets the language used on the device.
 -(void)setLanguage:(NSString *)value;
 
@@ -68,6 +74,21 @@
 
 /// setRegistryURL sets the URL of the OONI registry.
 -(void)setRegistryURL:(NSString *)value;
+
+/// setSecretsFile sets the path of the file where to store secrets.
+///
+/// This file is required to remember whether this probe has
+/// already logged in with the registry or not.
+-(void)setSecretsFile:(NSString *)value;
+
+/// setSoftwareName sets the name of the application.
+-(void)setSoftwareName:(NSString *)value;
+
+/// setSoftwareVersion sets the version of the application.
+-(void)setSoftwareVersion:(NSString *)value;
+
+/// addSupportedTest adds a test to the set of supported tests.
+-(void)addSupportedTest:(NSString *)value;
 
 /// setTimeout sets the number of seconds after which an orchestra
 /// operation by this client will be aborted.

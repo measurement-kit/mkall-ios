@@ -5,7 +5,7 @@ git submodule update --init  # Just in case
 
 # Download all MK libraries in a single archive
 if [ ! -f Frameworks/.stamp ]; then (
-  ./script/build/unix/make-ios-frameworks
+  ./script/build/ios/make-ios-frameworks
   rm -rf MK_DIST  # cleanup
   touch Frameworks/.stamp
 ) fi

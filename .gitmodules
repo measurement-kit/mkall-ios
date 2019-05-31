@@ -1,3 +1,3 @@
-[submodule "script/build/unix"]
-	path = script/build/unix
-	url = https://github.com/measurement-kit/script-build-unix
+[submodule "script/build/ios"]
+	path = script/build/ios
+	url = https://github.com/measurement-kit/script-build-ios
