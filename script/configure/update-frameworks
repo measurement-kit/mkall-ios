@@ -9,7 +9,8 @@ mkframework() {
   install -d $frameworkdir
   local framework="$(basename $frameworkdir | sed 's|\.framework$||g')"
   echo "* Creating $frameworkdir/$framework"
-  for archdir in $prebuiltdir/{arm64,armv7s,i386,x86_64}; do
+  local all_arch_dirs="$(echo $prebuiltdir/{arm64,armv7s,i386,x86_64})"
+  for archdir in $all_arch_dirs; do
     local all_libs="$(find $archdir/lib -type f -name \*.a)"
     libtool -static $all_libs -o "$frameworkdir/$(basename $archdir).a"
   done
@@ -17,7 +18,7 @@ mkframework() {
   rm -f $frameworkdir/*.a
   echo "* Copying machine dependent headers"
   install -d $frameworkdir/Headers/aaa_mkarch
-  for archdir in $prebuiltdir/{arm64,armv7s,i386,x86_64}; do
+  for archdir in $all_arch_dirs; do
     cp -Rp $archdir/$headersdir $frameworkdir/Headers/aaa_mkarch/$(basename $archdir)
   done
   echo "* Creating machine independent headers"
