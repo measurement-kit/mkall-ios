@@ -49,7 +49,7 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 topdir=$(cd $(dirname $0) && pwd -P)
-outdir=Frameworks
+outdir=$topdir/../../Frameworks
 rm -rf $outdir
 mkframework $1/ios-libmaxminddb $outdir/maxminddb.framework include
 mkframework $1/ios-libressl $outdir/openssl.framework include/openssl
