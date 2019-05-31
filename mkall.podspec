@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
     :sha256 => "5b88780b25709c01f9016c9e5ce034bfe1b1ca8c56406a881248d2e022b7c13b"
   }
   s.platform = :ios, "9.0"
-  s.vendored_framework = "mkall.framework"
+  s.vendored_framework = "Carthage/Build/iOS/mkall.framework"
 end
