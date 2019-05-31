@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license = { :type => "BSD" }
   s.source = {
     :http => "https://github.com/measurement-kit/mkall-ios/releases/download/v#{s.version}/mkall.framework.zip",
-    :sha256 => "f9bf341c461b18505fb4d7c6a2f4d7177b210283870feb58aaabd26b407e7f9e"
+    :sha256 => "5a17587b866b8e625ac4c86cb5a8561fc09405c0ac10295f98f202c2839fd31c"
   }
   s.platform = :ios, "9.0"
   s.vendored_framework = "mkall.framework"
