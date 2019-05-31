@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 packages-basedir" 1>&2
+  exit 1
+fi
+topdir=$(cd $(dirname $0) && pwd -P)
+outdir=$topdir/../../mkall/resources
+rm -f $outdir/*.mmdb $outdir/*.pem
+install -v $1/generic-assets/asn.mmdb $outdir/
+install -v $1/generic-assets/ca-bundle.pem $outdir/
+install -v $1/generic-assets/country.mmdb $outdir/

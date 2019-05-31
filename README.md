@@ -4,17 +4,20 @@
 
 All MK libraries for iOS. Integrate using Carthage or CocoaPods.
 
-## Updating dependencies
+## Installing and/or updating dependencies
+
+To install dependencies, do:
 
 ```
-cd script/build/ios
-git fetch
-git pull origin master
-cd -
+brew tap measurement-kit/measurement-kit
+brew install ios-measurement-kit generic-assets
 ```
 
-Then commit the changes. (Doing local development resets the
-subrepository; this is a known bug.)
+To upgrade dependencies, do:
+
+```
+brew upgrade
+```
 
 ## Local development
 
