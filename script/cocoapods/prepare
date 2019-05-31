@@ -1,0 +1,12 @@
+#!/bin/sh
+set -ex
+rm -rf mkall.framework
+curl -fsSLo mkall.framework.zip "$1"
+realsum=`shasum -a 256 mkall.framework.zip | awk '{print $1}'`
+if [ "$2" != "$realsum" ]; then
+  echo "FATAL: invalid framework checksum" 1>&2
+  exit 1
+fi
+unzip mkall.framework.zip
+mv Carthage/Build/iOS/mkall.framework .
+rm -rf Carthage
