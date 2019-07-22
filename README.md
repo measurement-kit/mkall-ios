@@ -29,17 +29,19 @@ open mkall.xcodeproj
 
 1. make sure that [mkall/Info.plist](mkall/Info.plist) is current;
 
-2. build using ```./build.sh```;
+2. make sure that [mkall/vendor](mkall/vendor) dependencies are current;
 
-3. commit;
+3. build using ```./build.sh```;
 
-4. tag;
+4. commit;
 
-5. push;
+5. tag;
 
-6. create a GitHub release;
+6. push;
 
-7. publish the archive into the release.
+7. create a GitHub release;
+
+8. publish the archive into the release.
 
 We'll use the version number in [mkall/Info.plist](mkall/Info.plist).
 

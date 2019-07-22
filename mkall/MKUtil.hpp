@@ -9,6 +9,7 @@
 
 #import <sstream>
 #import <string>
+#import <vector>
 
 #import <measurement_kit/internal/vendor/mkdata.hpp>
 
@@ -58,6 +59,20 @@
 // TODO(bassosimone): check whether we need to guarantee that
 // logs are base64 or we can assume MK's code to already provide
 // us with such guarantee.
+
+// mkutil_make_logs converts @p logs to a single string where individual
+// logs that are not base64 encoded are converted to base64.
+static inline NSString *mkutil_make_logs(
+    const std::vector<std::string> &logs) noexcept {
+  std::stringstream ss;
+  for (std::string s : logs) {
+    if (!mk::data::contains_valid_utf8(s)) {
+      s = mk::data::base64_encode(std::move(s));
+    }
+    ss << s << std::endl;
+  }
+  return [NSString stringWithUTF8String:ss.str().c_str()];
+}
 
 // MKUTIL_GET_LOGS defines a getter combining logs together, making
 // sure they are UTF-8 strings, and returning them as a single NSString
