@@ -19,7 +19,7 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   if (softwareName == nil || softwareVersion == nil) {
     abort();
   }
-  if ((self = [super init]) != nil) {
+  if ((self = [self init]) != nil) {
     self.impl = new mk::collector::Reporter(
       [softwareName UTF8String], [softwareVersion UTF8String]
     );

@@ -39,7 +39,7 @@ MKUTIL_EXTEND_CLASS(
 -(instancetype)initWithSerializedMeasurement:(NSString *)content
                                 softwareName:(NSString *)softwareName
                              softwareVersion:(NSString *)softwareVersion {
-  if ((self = [super init]) != nil) {
+  if ((self = [self init]) != nil) {
     [self setSerializedMeasurement:content];
     [self setSoftwareName:softwareName];
     [self setSoftwareVersion:softwareVersion];

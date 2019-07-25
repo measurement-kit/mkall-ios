@@ -31,7 +31,7 @@ MKUTIL_EXTEND_CLASS(MKOrchestraTask, mkapi_orchestra_client_t)
                      supportedTests:(NSArray<NSString *> *)supportedTests
                         deviceToken:(NSString *)deviceToken
                         secretsFile:(NSString *)secretsFile {
-  if ((self = [super init]) != nil) {
+  if ((self = [self init]) != nil) {
     [self setSoftwareName:softwareName];
     [self setSoftwareVersion:softwareVersion];
     for (NSString *s in supportedTests) {
