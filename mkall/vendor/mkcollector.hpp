@@ -141,11 +141,10 @@ CloseResponse close(const CloseRequest &request,
 /// unique ownership semantic by cancelling copy operations.
 class Reporter {
  public:
-  /// Reporter constructs a new report using the specified @p settings, with
-  /// @p software_name as the name of the tool that is submitting, and with the
-  /// version of such tool in @p software_version.
-  Reporter(Settings settings, std::string software_name,
-           std::string software_version) noexcept;
+  /// Reporter constructs a new reporter using the specified @p software_name
+  /// as the name of the tool that is submitting, and with the version of such
+  /// tool in @p software_version.
+  Reporter(std::string software_name, std::string software_version) noexcept;
 
   /// Reporter is the deleted copy constructor.
   Reporter(const Reporter &) noexcept = delete;
@@ -158,6 +157,19 @@ class Reporter {
 
   /// Reporter is the move assignment.
   Reporter &operator=(Reporter &&) noexcept = default;
+
+  /// set_ca_bundle_path sets the optional CA bundle path.
+  void set_ca_bundle_path(std::string path) noexcept;
+
+  /// ca_bundle_path returns the currently configured CA bundle path.
+  const std::string &ca_bundle_path() const noexcept;
+
+  /// set_base_url sets the collector base URL. If not set (the default) we
+  /// will use the bouncer API to discover this URL.
+  void set_base_url(std::string url) noexcept;
+
+  /// base_url returns the currently set collector base URL.
+  const std::string &base_url() const noexcept;
 
   /*
    * Testing helpers. Allow you to know about what code paths were
@@ -196,17 +208,23 @@ class Reporter {
 #undef XX
   };
 
-  // submit_with_stats is like submit but stores stats in @p stats.
+  // submit_with_stats is like submit_with_timeout but stores stats in @p stats.
   bool submit_with_stats(
       std::string &measurement, std::vector<std::string> &logs,
-      Stats &stats) noexcept;
+      int64_t upload_timeout, Stats &stats) noexcept;
+
+  /// submit with timeout is like submit but enforces @p upload_timeout as the
+  /// number of seconds after which the HTTP upload is aborted.
+  bool submit_with_timeout(
+      std::string &measurement, std::vector<std::string> &logs,
+      int64_t upload_timeout) noexcept;
 
   /// submit submits @p measurement to the configured collector. The @p
   /// measurement string is modified in place to point to the correct report
   /// ID as part of the submission. This function implements the following
   /// algorithm to auto-manage the report lifecycle:
   ///
-  /// 0. if no settings.base_url is configured, the bouncer is used
+  /// 0. if no base_url_ is configured, the bouncer is used
   /// to discover the base URL that should be used;
   ///
   /// 1. the same HTTP client is used throughout the lifecycle of this
@@ -235,12 +253,21 @@ class Reporter {
       std::string &measurement, std::vector<std::string> &logs) noexcept;
 
   /// report_id contains the currently used report ID.
-  const std::string &report_id() noexcept;
+  const std::string &report_id() const noexcept;
 
   /// ~Reporter will close the report if necessary.
   ~Reporter() noexcept;
 
  private:
+  // make_settings creates a setting structure with the specified @p timeout.
+  Settings make_settings(int64_t timeout) const noexcept;
+
+  // base_url_ contains the collector base URL.
+  std::string base_url_;
+
+  // ca_bundle_path_ is the CA bundle path to use.
+  std::string ca_bundle_path_;
+
   // client_ is the mkcurl client to use.
   curl::Client client_;
 
@@ -252,8 +279,8 @@ class Reporter {
   // report_id_ is the report ID to use.
   std::string report_id_;
 
-  // settings_ contains common collector settings.
-  Settings settings_;
+  // short_timeout is the API calls timeout in seconds.
+  int64_t short_timeout_ = 30;
 
   // software_name_ is the name of the tool that is submitting.
   std::string software_name_;
@@ -494,11 +521,26 @@ CloseResponse close(const CloseRequest &request,
   return close_with_client_(client, request, settings);
 }
 
-Reporter::Reporter(Settings settings, std::string software_name,
-                   std::string software_version) noexcept {
-  std::swap(settings_, settings);
+Reporter::Reporter(
+    std::string software_name, std::string software_version) noexcept {
   std::swap(software_version_, software_version);
   std::swap(software_name_, software_name);
+}
+
+void Reporter::set_ca_bundle_path(std::string path) noexcept {
+  std::swap(path, ca_bundle_path_);
+}
+
+const std::string &Reporter::ca_bundle_path() const noexcept {
+  return ca_bundle_path_;
+}
+
+void Reporter::set_base_url(std::string url) noexcept {
+  std::swap(base_url_, url);
+}
+
+const std::string &Reporter::base_url() const noexcept {
+  return base_url_;
 }
 
 bool Reporter::Stats::operator==(const Stats &other) const {
@@ -524,9 +566,9 @@ Reporter::Stats::Stats(std::initializer_list<std::string> list) noexcept {
 
 bool Reporter::submit_with_stats(
     std::string &measurement, std::vector<std::string> &logs,
-    Stats &stats) noexcept {
+    int64_t upload_timeout, Stats &stats) noexcept {
   // step 0 (see description of the algorithm above) - maybe discover bouncer
-  if (settings_.base_url == "") {
+  if (base_url_ == "") {
     // TODO(bassosimone): the bouncer API we're currently using only returns
     // a single collector, but a more modern API returns them all. We can maybe
     // change the bouncer client code to use the new API and then use that
@@ -534,8 +576,9 @@ bool Reporter::submit_with_stats(
     // already implements this functionality. Whatever happens first?
     logs.push_back("Using bouncer to discover a collector");
     mk::bouncer::Request request;
-    request.ca_bundle_path = settings_.ca_bundle_path;
+    request.ca_bundle_path = ca_bundle_path_;
     request.name = "web_connectivity";  // any test name is fine
+    request.timeout = short_timeout_;
     request.version = "0.0.1";          // any version is fine
     mk::bouncer::Response response = mk::bouncer::perform(request);
     logs.insert(
@@ -548,18 +591,18 @@ bool Reporter::submit_with_stats(
     MKCOLLECTOR_HOOK(bouncer_response_collectors, response.collectors);
     for (auto &entry : response.collectors) {
       if (entry.type == "https") {
-        settings_.base_url = entry.address;
+        base_url_ = entry.address;
         break;
       }
     }
-    if (settings_.base_url == "") {
+    if (base_url_ == "") {
       logs.push_back("No suitable collector found in bouncer response");
       stats.bouncer_no_collectors++;
       return false;
     }
     stats.bouncer_okay += 1;
     std::stringstream ss;
-    ss << "Found this collector: " << settings_.base_url;
+    ss << "Found this collector: " << base_url_;
     logs.push_back(ss.str());
     // FALLTHROUGH
   }
@@ -590,7 +633,7 @@ bool Reporter::submit_with_stats(
         CloseRequest close_request;
         close_request.report_id = std::move(report_id_);  // clears report_id_
         auto close_response = close_with_client_(
-            client_, close_request, settings_);
+            client_, close_request, make_settings(short_timeout_));
         logs.insert(std::end(logs), std::begin(close_response.logs),
                     std::end(close_response.logs));
         MKCOLLECTOR_HOOK(reporter_close_response_good, close_response.good);
@@ -605,7 +648,7 @@ bool Reporter::submit_with_stats(
       if (report_id_ == "") {
         logs.push_back("Opening new report");
         auto open_response = open_with_client_(
-            client_, open_request, settings_);
+            client_, open_request, make_settings(short_timeout_));
         logs.insert(std::end(logs), std::begin(open_response.logs),
                     std::end(open_response.logs));
         MKCOLLECTOR_HOOK(reporter_open_response_good, open_response.good);
@@ -642,7 +685,7 @@ bool Reporter::submit_with_stats(
   }
   logs.push_back("Updating the report");
   auto update_response = update_with_client_(
-      client_, update_request, settings_);
+      client_, update_request, make_settings(upload_timeout));
   logs.insert(std::end(logs), std::begin(update_response.logs),
               std::end(update_response.logs));
   MKCOLLECTOR_HOOK(reporter_update_response_good, update_response.good);
@@ -657,13 +700,19 @@ bool Reporter::submit_with_stats(
   return true;
 }
 
-bool Reporter::submit(
-    std::string &measurement, std::vector<std::string> &logs) noexcept {
+bool Reporter::submit_with_timeout(
+    std::string &measurement, std::vector<std::string> &logs,
+    int64_t upload_timeout) noexcept {
   Stats stats;
-  return submit_with_stats(measurement, logs, stats);
+  return submit_with_stats(measurement, logs, upload_timeout, stats);
 }
 
-const std::string &Reporter::report_id() noexcept {
+bool Reporter::submit(
+    std::string &measurement, std::vector<std::string> &logs) noexcept {
+  return submit_with_timeout(measurement, logs, 0);
+}
+
+const std::string &Reporter::report_id() const noexcept {
   return report_id_;
 }
 
@@ -671,8 +720,17 @@ Reporter::~Reporter() noexcept {
   if (report_id_ != "") {
     CloseRequest close_request;
     close_request.report_id = std::move(report_id_);  // clear report ID
-    (void)close_with_client_(client_, close_request, settings_);
+    (void)close_with_client_(
+        client_, close_request, make_settings(short_timeout_));
   }
+}
+
+Settings Reporter::make_settings(int64_t timeout) const noexcept {
+  Settings settings;
+  settings.base_url = base_url_;
+  settings.ca_bundle_path = ca_bundle_path_;
+  settings.timeout = timeout;
+  return settings;
 }
 
 }  // inline namespace MKCOLLECTOR_INLINE_NAMESPACE

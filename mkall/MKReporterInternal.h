@@ -14,7 +14,8 @@ using MKReporterStats = mk::collector::Reporter::Stats;
 @interface MKReporterTask ()
 
 -(MKReporterResults *)submitWithMeasurement:(NSString *)measurement
-                                   andStats:(MKReporterStats *)pstats;
+                              uploadTimeout:(int64_t)timeout
+                                      stats:(MKReporterStats *)pstats;
 
 @end // @interface MKReporterTask
 

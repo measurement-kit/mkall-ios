@@ -7,35 +7,6 @@
 #import "MKResources.h"
 #import "MKUtil.hpp"
 
-MKUTIL_EXTEND_CLASS(MKReporterSettings, mk::collector::Settings);
-
-@implementation MKReporterSettings
-
-MKUTIL_INIT_WITH_IMPLICIT_CA_ASN_COUNTRY(
-  []() -> mk::collector::Settings *{
-    return new mk::collector::Settings;
-  }, [](mk::collector::Settings *p, const char *v) {
-    p->ca_bundle_path = v;
-  }, [](mk::collector::Settings *, const char *) {
-    // NOTHING
-  }, [](mk::collector::Settings *, const char *) {
-    // NOTHING
-  })
-
-MKUTIL_SET_STRING(setBaseURL, [](mk::collector::Settings *p, const char *v) {
-  p->base_url = v;
-})
-
-MKUTIL_SET_INT(setTimeout, [](mk::collector::Settings *p, int64_t v) {
-  p->timeout = v;
-})
-
-MKUTIL_DEINIT([](mk::collector::Settings *s) {
-  delete s; // handles nullptr gracefully
-})
-
-@end // @implementation MKReporterSettings
-
 @implementation MKReporterResults
 @end // @implementation MKReporterResults
 
@@ -43,27 +14,30 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
 
 @implementation MKReporterTask
 
--(instancetype)initWithSettings:(MKReporterSettings *)settings
-                   softwareName:(NSString *)softwareName
-                softwareVersion:(NSString *)softwareVersion {
-  if (settings == nil || settings.impl == nil ||
-      softwareName == nil || softwareVersion == nil) {
+-(instancetype)initWithSoftwareName:(NSString *)softwareName
+                    softwareVersion:(NSString *)softwareVersion {
+  if (softwareName == nil || softwareVersion == nil) {
     abort();
   }
-  if (([self init]) != nil) {
+  if ((self = [super init]) != nil) {
     self.impl = new mk::collector::Reporter(
-      *settings.impl, [softwareName UTF8String], [softwareVersion UTF8String]
+      [softwareName UTF8String], [softwareVersion UTF8String]
     );
+    self.impl->set_ca_bundle_path([[MKResources caBundlePath] UTF8String]);
   }
   return self;
 }
 
--(MKReporterResults *)submit:(NSString *)measurement {
-  return [self submitWithMeasurement:measurement andStats:nil];
+-(MKReporterResults *)submit:(NSString *)measurement
+               uploadTimeout:(int64_t)timeout{
+  return [self submitWithMeasurement:measurement
+                       uploadTimeout:timeout
+                               stats:nil];
 }
 
 -(MKReporterResults *)submitWithMeasurement:(NSString *)measurement
-                                   andStats:(MKReporterStats *)pstats {
+                              uploadTimeout:(int64_t)timeout
+                                      stats:(MKReporterStats *)pstats {
   if (measurement == nil) {
     abort();
   }
@@ -71,7 +45,7 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   std::vector<std::string> logs;
   MKReporterResults *results = [[MKReporterResults alloc] init];
   mk::collector::Reporter::Stats stats;
-  results.good = self.impl->submit_with_stats(m, logs, stats);
+  results.good = self.impl->submit_with_stats(m, logs, timeout, stats);
   results.updatedSerializedMeasurement = [
     NSString stringWithUTF8String:m.c_str()
   ];

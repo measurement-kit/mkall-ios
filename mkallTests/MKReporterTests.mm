@@ -60,13 +60,8 @@ static const char *thirdMeasurement = R"({
 // Utility function to create a task with specific configuration
 static MKReporterTask *makeTask(
     NSString *softwareName, NSString *softwareVersion) {
-  MKReporterSettings *settings = [[MKReporterSettings alloc] init];
-  MKReporterTask *reporter = [
-    [MKReporterTask alloc] initWithSettings:settings
-                               softwareName:softwareName
-                            softwareVersion:softwareVersion
-  ];
-  return reporter;
+  return [[MKReporterTask alloc] initWithSoftwareName:softwareName
+                                      softwareVersion:softwareVersion];
 }
 
 // Utility function to create a measurement from a C string
@@ -85,15 +80,13 @@ static NSString *makeMeasurement(const char *m) {
             expectedResult:(BOOL)expectedResult
              expectedStats:(MKReporterStats *)expectedStats {
   MKReporterStats stats{};
-  MKReporterResults *results = [
-    task submitWithMeasurement:measurement andStats:&stats
-  ];
+  MKReporterResults *results = [task submitWithMeasurement:measurement
+                                             uploadTimeout:0
+                                                     stats:&stats];
   NSLog(@"logs: %@", [results logs]);
   NSLog(@"=== BEGIN VARIABLES ===");
   NSLog(@"good: %d", [results good]);
-  NSLog(@"updatedSerializedMeasurement: %@", [
-    results updatedSerializedMeasurement
-  ]);
+  NSLog(@"updatedSerializedMeasurement: %@", [results updatedSerializedMeasurement]);
   NSLog(@"updatedReportID: %@", [results updatedReportID]);
   NSLog(@"=== END VARIABLES ===");
   XCTAssert([[results logs] length] > 0);
