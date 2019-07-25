@@ -27,7 +27,7 @@ MKUTIL_GET_STRING(probeOrg, mk_geoiplookup_response_org)
 MKUTIL_GET_LOGS(logs, mk_geoiplookup_response_logs_size,
                 mk_geoiplookup_response_logs_at)
 
-MKUTIL_DEINIT(mk_geoiplookup_response_delete)
+MKUTIL_DEALLOC(mk_geoiplookup_response_delete)
 
 @end  // implementation MKGeoIPLookupResults
 
@@ -46,6 +46,6 @@ MKUTIL_SET_INT(setTimeout, mk_geoiplookup_request_set_timeout)
 MKUTIL_WRAP_GET_POINTER(MKGeoIPLookupResults, perform,
                         mk_geoiplookup_perform)
 
-MKUTIL_DEINIT(mk_geoiplookup_request_delete)
+MKUTIL_DEALLOC(mk_geoiplookup_request_delete)
 
 @end  // implementation MKGeoIPLookupTask

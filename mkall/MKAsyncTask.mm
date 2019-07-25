@@ -91,7 +91,7 @@ static mk_task_t *updateSettingsAndStart(const char *settings) {
   mk_task_interrupt(self.task);
 }
 
-- (void)deinit {
+- (void)dealloc {
   mk_task_destroy(self.task);
 }
 

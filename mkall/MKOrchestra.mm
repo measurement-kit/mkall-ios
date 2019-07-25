@@ -18,15 +18,11 @@ MKUTIL_GET_BOOL(good, mkapi_orchestra_result_good)
 
 MKUTIL_GET_LOGS_FROM_DATA(logs, mkapi_orchestra_result_get_binary_logs)
 
-MKUTIL_DEINIT(mkapi_orchestra_result_delete)
+MKUTIL_DEALLOC(mkapi_orchestra_result_delete)
 
 @end  // imlementation MKOrchestraResults
 
 MKUTIL_EXTEND_CLASS(MKOrchestraTask, mkapi_orchestra_client_t)
-
-@interface MKOrchestraTask ()
--(instancetype)init;
-@end // interface MKOrchestraTask
 
 @implementation MKOrchestraTask
 
@@ -88,6 +84,6 @@ MKUTIL_SET_INT(setTimeout, mkapi_orchestra_client_set_timeout)
 MKUTIL_WRAP_GET_POINTER(MKOrchestraResults,
   updateOrRegister, mkapi_orchestra_client_sync)
 
-MKUTIL_DEINIT(mkapi_orchestra_client_delete)
+MKUTIL_DEALLOC(mkapi_orchestra_client_delete)
 
 @end  // implementation MKOrchestraTask

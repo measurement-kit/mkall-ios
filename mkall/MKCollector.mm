@@ -27,16 +27,12 @@ MKUTIL_GET_STRING(
 MKUTIL_GET_LOGS(logs, mk_collector_resubmit_response_logs_size,
     mk_collector_resubmit_response_logs_at)
 
-MKUTIL_DEINIT(mk_collector_resubmit_response_delete)
+MKUTIL_DEALLOC(mk_collector_resubmit_response_delete)
 
 @end  // implementation MKCollectorResubmitResults
 
 MKUTIL_EXTEND_CLASS(
   MKCollectorResubmitTask, mk_collector_resubmit_request_t);
-
-@interface MKCollectorResubmitTask ()
--(instancetype)init;
-@end // interface MKCollectorResubmitTask
 
 @implementation MKCollectorResubmitTask
 
@@ -70,6 +66,6 @@ MKUTIL_SET_INT(setTimeout, mk_collector_resubmit_request_set_timeout)
 MKUTIL_WRAP_GET_POINTER(MKCollectorResubmitResults, perform,
                         mk_collector_resubmit)
 
-MKUTIL_DEINIT(mk_collector_resubmit_request_delete)
+MKUTIL_DEALLOC(mk_collector_resubmit_request_delete)
 
 @end // implementation MKCollectorResubmitTask

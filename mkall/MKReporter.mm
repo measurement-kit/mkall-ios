@@ -62,7 +62,7 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   return results;
 }
 
-MKUTIL_DEINIT([](mk::collector::Reporter *r) {
+MKUTIL_DEALLOC([](mk::collector::Reporter *r) {
   delete r; // handles nullptr gracefully
 })
 

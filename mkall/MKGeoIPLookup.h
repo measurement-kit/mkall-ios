@@ -54,14 +54,10 @@
 /// return value may also be nil.
 -(NSString *)logs;
 
--(void)deinit;
-
 @end  // interface MKGeoIPLookupResults
 
 /// MKGeoIPLookupTask is a sync task performing a GeoIP lookup.
 @interface MKGeoIPLookupTask : NSObject
-
--(instancetype)init;
 
 /// setTimeout sets the number of seconds after which a pending
 /// GeoIP lookup attempt is aborted by MK.
@@ -72,8 +68,6 @@
 /// Returns an object describing the lookup results. Note that
 /// the return value may also be nil.
 -(MKGeoIPLookupResults *)perform;
-
--(void)deinit;
 
 @end  // interface MKGeoIPLookupTask
 

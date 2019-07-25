@@ -23,16 +23,16 @@
 @property property_type *impl;                         \
 @end
 
-// Make sure we have ARC enabled because MKUTIL_DEINIT assumes it.
+// Make sure we have ARC enabled because MKUTIL_DEALLOC assumes it.
 #if !__has_feature(objc_arc)
 #error "This code assumes that ARC is enabled"
 #endif
 
-// MKUTIL_DEINIT defines the destructor. We assume that ARC is enabled
-// therefore we MUST NOT send a deinit message to the parent.
-#define MKUTIL_DEINIT(cxx_func) \
--(void)deinit {                 \
-  cxx_func(self.impl);          \
+// MKUTIL_DEALLOC defines the destructor. We assume that ARC is enabled
+// therefore we MUST NOT send a dealloc message to the parent.
+#define MKUTIL_DEALLOC(cxx_func) \
+-(void)dealloc {                 \
+  cxx_func(self.impl);           \
 }
 
 // MKUTIL_GET_BOOL defines a getter returning boolean.

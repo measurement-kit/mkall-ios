@@ -24,8 +24,6 @@
 /// logs contains logs useful to debug failures.
 -(NSString *)logs;
 
--(void)deinit;
-
 @end  // interface MKCollectorResponse
 
 /// MKCollectorResubmitTask is a sync task that resubmits
@@ -55,8 +53,6 @@
 /// perform resubmits the selected measurement to the OONI collector
 /// using the current value of the settings.
 -(MKCollectorResubmitResults *)perform;
-
--(void)deinit;
 
 @end  // interface MKCollectorResubmitTask
 
