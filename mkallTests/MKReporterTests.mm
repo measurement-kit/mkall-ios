@@ -78,11 +78,11 @@ static NSString *makeMeasurement(const char *m) {
 - (void)submissionWithTask:(MKReporterTask *)task
                measurement:(NSString *)measurement
             expectedResult:(BOOL)expectedResult
-             expectedStats:(MKReporterStats *)expectedStats {
-  MKReporterStats stats{};
+             expectedStats:(NSDictionary *)expectedStats {
+  NSMutableDictionary *stats = [[NSMutableDictionary alloc] init];
   MKReporterResults *results = [task submitWithMeasurement:measurement
                                              uploadTimeout:0
-                                                     stats:&stats];
+                                                     stats:stats];
   NSLog(@"logs: %@", [results logs]);
   NSLog(@"=== BEGIN VARIABLES ===");
   NSLog(@"good: %d", [results good]);
@@ -96,9 +96,7 @@ static NSString *makeMeasurement(const char *m) {
     XCTAssert([rid length] > 0);
     XCTAssert([[results updatedSerializedMeasurement] containsString:rid]);
   }
-#define XX(name_) XCTAssert(stats.name_ == expectedStats->name_);
-  MKCOLLECTOR_REPORTER_STATS_ENUM(XX)
-#undef XX
+  XCTAssert([stats isEqualToDictionary:expectedStats]);
 }
 
 // Utility function to submit just a single measurement.
@@ -106,7 +104,7 @@ static NSString *makeMeasurement(const char *m) {
             softwareName:(NSString *)softwareName
          softwareVersion:(NSString *)softwareVersion
           expectedResult:(BOOL)expectedResult
-           expectedStats:(MKReporterStats *)expectedStats {
+           expectedStats:(NSDictionary *)expectedStats {
   return [self submissionWithTask:makeTask(softwareName, softwareVersion)
                       measurement:measurement
                    expectedResult:expectedResult
@@ -115,65 +113,118 @@ static NSString *makeMeasurement(const char *m) {
 
 // Ensure that we can submit a single measurement.
 - (void)testResubmissionGood {
-  MKReporterStats stats{};
-  stats.bouncer_okay = 1;
-  stats.load_request_okay = 1;
-  stats.open_report_okay = 1;
-  stats.update_report_okay = 1;
+  NSDictionary *stats = @{
+    @"bouncer_error": @0,
+    @"bouncer_okay": @1,
+    @"bouncer_no_collectors": @0,
+    @"load_request_error": @0,
+    @"load_request_okay": @1,
+    @"close_report_error": @0,
+    @"close_report_okay": @0,
+    @"open_report_error": @0,
+    @"report_id_empty": @0,
+    @"open_report_okay": @1,
+    @"serialize_measurement_error": @0,
+    @"update_report_error": @0,
+    @"update_report_okay": @1,
+  };
   [self simpleSubmission:makeMeasurement(firstMeasurement)
             softwareName:@"ooniprobe-ios"
          softwareVersion:@"2.0.1"
           expectedResult:YES
-           expectedStats:&stats];
+           expectedStats:stats];
 }
 
 // Ensure that we cannot resubmit if we're ooniprobe-android 2.0.0. This
 // is mainly to be sure that we can set software name and version.
 - (void)testResubmissionBad {
-  MKReporterStats stats{};
-  stats.bouncer_okay = 1;
-  stats.load_request_okay = 1;
-  stats.open_report_error = 1;
+  NSDictionary *stats = @{
+    @"bouncer_error": @0,
+    @"bouncer_okay": @1,
+    @"bouncer_no_collectors": @0,
+    @"load_request_error": @0,
+    @"load_request_okay": @1,
+    @"close_report_error": @0,
+    @"close_report_okay": @0,
+    @"open_report_error": @1,
+    @"report_id_empty": @0,
+    @"open_report_okay": @0,
+    @"serialize_measurement_error": @0,
+    @"update_report_error": @0,
+    @"update_report_okay": @0,
+  };
   [self simpleSubmission:makeMeasurement(firstMeasurement)
             softwareName:@"ooniprobe-android"
          softwareVersion:@"2.0.0"
           expectedResult:NO
-           expectedStats:&stats];
+           expectedStats:stats];
 }
 
 // Ensure that we can resubmit many measurements.
 - (void)testResubmissionMany {
   MKReporterTask *task = makeTask(@"ooniprobe-ios", @"2.0.1");
   {
-    MKReporterStats stats{};
-    stats.bouncer_okay = 1;
-    stats.load_request_okay = 1;
-    stats.open_report_okay = 1;
-    stats.update_report_okay = 1;
+    NSDictionary *stats = @{
+      @"bouncer_error": @0,
+      @"bouncer_okay": @1,
+      @"bouncer_no_collectors": @0,
+      @"load_request_error": @0,
+      @"load_request_okay": @1,
+      @"close_report_error": @0,
+      @"close_report_okay": @0,
+      @"open_report_error": @0,
+      @"report_id_empty": @0,
+      @"open_report_okay": @1,
+      @"serialize_measurement_error": @0,
+      @"update_report_error": @0,
+      @"update_report_okay": @1,
+    };
     [self submissionWithTask:task
                  measurement:makeMeasurement(firstMeasurement)
               expectedResult:YES
-               expectedStats:&stats];
+               expectedStats:stats];
   }
   {
-    MKReporterStats stats{};
-    stats.load_request_okay = 1;
-    stats.update_report_okay = 1;
+    NSDictionary *stats = @{
+      @"bouncer_error": @0,
+      @"bouncer_okay": @0,
+      @"bouncer_no_collectors": @0,
+      @"load_request_error": @0,
+      @"load_request_okay": @1,
+      @"close_report_error": @0,
+      @"close_report_okay": @0,
+      @"open_report_error": @0,
+      @"report_id_empty": @0,
+      @"open_report_okay": @0,
+      @"serialize_measurement_error": @0,
+      @"update_report_error": @0,
+      @"update_report_okay": @1,
+    };
     [self submissionWithTask:task
                  measurement:makeMeasurement(secondMeasurement)
               expectedResult:YES
-               expectedStats:&stats];
+               expectedStats:stats];
   }
   {
-    MKReporterStats stats{};
-    stats.load_request_okay = 1;
-    stats.close_report_okay = 1;
-    stats.open_report_okay = 1;
-    stats.update_report_okay = 1;
+    NSDictionary *stats = @{
+      @"bouncer_error": @0,
+      @"bouncer_okay": @0,
+      @"bouncer_no_collectors": @0,
+      @"load_request_error": @0,
+      @"load_request_okay": @1,
+      @"close_report_error": @0,
+      @"close_report_okay": @1,
+      @"open_report_error": @0,
+      @"report_id_empty": @0,
+      @"open_report_okay": @1,
+      @"serialize_measurement_error": @0,
+      @"update_report_error": @0,
+      @"update_report_okay": @1,
+    };
     [self submissionWithTask:task
                  measurement:makeMeasurement(thirdMeasurement)
               expectedResult:YES
-               expectedStats:&stats];
+               expectedStats:stats];
   }
 }
 

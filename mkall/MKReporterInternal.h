@@ -7,15 +7,12 @@
 // Internal file containing interfaces used for testing.
 
 #import "MKReporter.h"
-#import "vendor/mkcollector.hpp"
-
-using MKReporterStats = mk::collector::Reporter::Stats;
 
 @interface MKReporterTask ()
 
 -(MKReporterResults *)submitWithMeasurement:(NSString *)measurement
                               uploadTimeout:(int64_t)timeout
-                                      stats:(MKReporterStats *)pstats;
+                                      stats:(NSMutableDictionary *)pstats;
 
 @end // @interface MKReporterTask
 

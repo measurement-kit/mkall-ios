@@ -2,8 +2,9 @@
 // Measurement Kit is free software under the BSD license. See AUTHORS
 // and LICENSE for more information on the copying conditions.
 
-#import "MKReporterInternal.h"
+#import "vendor/mkcollector.hpp"
 
+#import "MKReporterInternal.h"
 #import "MKResources.h"
 #import "MKUtil.hpp"
 
@@ -37,7 +38,7 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
 
 -(MKReporterResults *)submitWithMeasurement:(NSString *)measurement
                               uploadTimeout:(int64_t)timeout
-                                      stats:(MKReporterStats *)pstats {
+                                      stats:(NSMutableDictionary *)pstats {
   if (measurement == nil) {
     abort();
   }
@@ -45,7 +46,8 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   std::vector<std::string> logs;
   MKReporterResults *results = [[MKReporterResults alloc] init];
   mk::collector::Reporter::Stats stats;
-  results.good = self.impl->submit_with_stats(m, logs, timeout, stats);
+  results.good = self.impl->maybe_discover_and_submit_with_stats(
+    m, logs, timeout, stats);
   results.updatedSerializedMeasurement = [
     NSString stringWithUTF8String:m.c_str()
   ];
@@ -54,8 +56,9 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   ];
   results.logs = mkutil_make_logs(logs);
   if (pstats != nil) {
-    *pstats = {}; // zero the structure just in case
-#define XX(name_) pstats->name_ = stats.name_;
+#define XX(name_) do { \
+    [pstats setObject:[NSNumber numberWithLong:stats.name_] forKey:@#name_]; \
+  } while (0);
     MKCOLLECTOR_REPORTER_STATS_ENUM(XX)
 #undef XX
   }
