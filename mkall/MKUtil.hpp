@@ -9,6 +9,7 @@
 
 #import <sstream>
 #import <string>
+#import <vector>
 
 #import <measurement_kit/internal/vendor/mkdata.hpp>
 
@@ -22,16 +23,16 @@
 @property property_type *impl;                         \
 @end
 
-// Make sure we have ARC enabled because MKUTIL_DEINIT assumes it.
+// Make sure we have ARC enabled because MKUTIL_DEALLOC assumes it.
 #if !__has_feature(objc_arc)
 #error "This code assumes that ARC is enabled"
 #endif
 
-// MKUTIL_DEINIT defines the destructor. We assume that ARC is enabled
-// therefore we MUST NOT send a deinit message to the parent.
-#define MKUTIL_DEINIT(cxx_func) \
--(void)deinit {                 \
-  cxx_func(self.impl);          \
+// MKUTIL_DEALLOC defines the destructor. We assume that ARC is enabled
+// therefore we MUST NOT send a dealloc message to the parent.
+#define MKUTIL_DEALLOC(cxx_func) \
+-(void)dealloc {                 \
+  cxx_func(self.impl);           \
 }
 
 // MKUTIL_GET_BOOL defines a getter returning boolean.
@@ -58,6 +59,20 @@
 // TODO(bassosimone): check whether we need to guarantee that
 // logs are base64 or we can assume MK's code to already provide
 // us with such guarantee.
+
+// mkutil_make_logs converts @p logs to a single string where individual
+// logs that are not base64 encoded are converted to base64.
+static inline NSString *mkutil_make_logs(
+    const std::vector<std::string> &logs) noexcept {
+  std::stringstream ss;
+  for (std::string s : logs) {
+    if (!mk::data::contains_valid_utf8(s)) {
+      s = mk::data::base64_encode(std::move(s));
+    }
+    ss << s << std::endl;
+  }
+  return [NSString stringWithUTF8String:ss.str().c_str()];
+}
 
 // MKUTIL_GET_LOGS defines a getter combining logs together, making
 // sure they are UTF-8 strings, and returning them as a single NSString

@@ -18,8 +18,6 @@
 /// this method may also return nil.
 -(NSString *)logs;
 
--(void)deinit;
-
 @end  // interface MKOrchestraResults
 
 /// MKOrchestraTask is a sync task for performing OONI orchestra operations.
@@ -102,8 +100,6 @@
 /// state stored inside the secret file: if we know we've registered
 /// in the past, we update, otherwise we register.
 -(MKOrchestraResults *)updateOrRegister;
-
--(void)deinit;
 
 @end  // interface MKOrchestraTask
 #endif /* MKOrchestra_h */

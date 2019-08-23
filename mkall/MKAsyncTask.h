@@ -35,8 +35,6 @@
 /// and and may therefore ignore the interrupt signal.
 - (void)interrupt;
 
-- (void)deinit;
-
 @end  // interface MKAsyncTask
 
 #endif /* MKAsyncTask_h */
