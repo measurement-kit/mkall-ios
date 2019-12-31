@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "mkall"
-  s.version = "0.6.2"
+  s.version = "0.6.3"
   s.summary = "Measurement Kit iOS libraries"
   s.author = "Simone Basso"
   s.homepage = "https://github.com/measurement-kit"
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   }
   s.prepare_command = <<-CMD
     url="https://github.com/measurement-kit/mkall-ios/releases/download/v#{s.version}/mkall.framework.zip"
-    sha256="fe612909ad228b6700baff3cb7ad07dd8ef20e7fad7fc47a3743ea940215875f"
+    sha256="d37591dc7514710b36058e3ab9748379bba38fbab1501702b2ecbadc461f0678"
     ./script/cocoapods/prepare $url $sha256
   CMD
   s.platform = :ios, "9.0"
