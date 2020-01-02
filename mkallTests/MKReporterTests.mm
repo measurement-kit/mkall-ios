@@ -78,7 +78,8 @@ static NSString *makeMeasurement(const char *m) {
 - (void)submissionWithTask:(MKReporterTask *)task
                measurement:(NSString *)measurement
             expectedResult:(BOOL)expectedResult
-             expectedStats:(NSDictionary *)expectedStats {
+             expectedStats:(NSDictionary *)expectedStats
+            expectedReason:(NSString *)expectedReason {
   NSMutableDictionary *stats = [[NSMutableDictionary alloc] init];
   MKReporterResults *results = [task submitWithMeasurement:measurement
                                              uploadTimeout:0
@@ -88,6 +89,7 @@ static NSString *makeMeasurement(const char *m) {
   NSLog(@"good: %d", [results good]);
   NSLog(@"updatedSerializedMeasurement: %@", [results updatedSerializedMeasurement]);
   NSLog(@"updatedReportID: %@", [results updatedReportID]);
+  NSLog(@"reason: %@", [results reason]);
   NSLog(@"=== END VARIABLES ===");
   XCTAssert([[results logs] length] > 0);
   XCTAssert([results good] == expectedResult);
@@ -96,6 +98,7 @@ static NSString *makeMeasurement(const char *m) {
     XCTAssert([rid length] > 0);
     XCTAssert([[results updatedSerializedMeasurement] containsString:rid]);
   }
+  XCTAssert([[results reason] isEqualToString:expectedReason]);
   XCTAssert([stats isEqualToDictionary:expectedStats]);
 }
 
@@ -104,11 +107,13 @@ static NSString *makeMeasurement(const char *m) {
             softwareName:(NSString *)softwareName
          softwareVersion:(NSString *)softwareVersion
           expectedResult:(BOOL)expectedResult
-           expectedStats:(NSDictionary *)expectedStats {
+           expectedStats:(NSDictionary *)expectedStats
+          expectedReason:(NSString *)reason {
   return [self submissionWithTask:makeTask(softwareName, softwareVersion)
                       measurement:measurement
                    expectedResult:expectedResult
-                    expectedStats:expectedStats];
+                    expectedStats:expectedStats
+                   expectedReason:reason];
 }
 
 // Ensure that we can submit a single measurement.
@@ -132,7 +137,8 @@ static NSString *makeMeasurement(const char *m) {
             softwareName:@"ooniprobe-ios"
          softwareVersion:@"2.0.1"
           expectedResult:YES
-           expectedStats:stats];
+           expectedStats:stats
+          expectedReason:[[NSString alloc] init]];
 }
 
 // Ensure that we cannot resubmit if we're ooniprobe-android 2.0.0. This
@@ -157,7 +163,9 @@ static NSString *makeMeasurement(const char *m) {
             softwareName:@"ooniprobe-android"
          softwareVersion:@"2.0.0"
           expectedResult:NO
-           expectedStats:stats];
+           expectedStats:stats
+          expectedReason:[NSString
+            stringWithUTF8String:"collector: HTTP response code said error"]];
 }
 
 // Ensure that we can resubmit many measurements.
@@ -182,7 +190,8 @@ static NSString *makeMeasurement(const char *m) {
     [self submissionWithTask:task
                  measurement:makeMeasurement(firstMeasurement)
               expectedResult:YES
-               expectedStats:stats];
+               expectedStats:stats
+              expectedReason:[[NSString alloc] init]];
   }
   {
     NSDictionary *stats = @{
@@ -203,7 +212,9 @@ static NSString *makeMeasurement(const char *m) {
     [self submissionWithTask:task
                  measurement:makeMeasurement(secondMeasurement)
               expectedResult:YES
-               expectedStats:stats];
+               expectedStats:stats
+              expectedReason:[[NSString alloc] init]];
+
   }
   {
     NSDictionary *stats = @{
@@ -224,7 +235,9 @@ static NSString *makeMeasurement(const char *m) {
     [self submissionWithTask:task
                  measurement:makeMeasurement(thirdMeasurement)
               expectedResult:YES
-               expectedStats:stats];
+               expectedStats:stats
+              expectedReason:[[NSString alloc] init]];
+
   }
 }
 

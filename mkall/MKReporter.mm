@@ -46,8 +46,10 @@ MKUTIL_EXTEND_CLASS(MKReporterTask, mk::collector::Reporter);
   std::vector<std::string> logs;
   MKReporterResults *results = [[MKReporterResults alloc] init];
   mk::collector::Reporter::Stats stats;
-  results.good = self.impl->maybe_discover_and_submit_with_stats(
-    m, logs, timeout, stats);
+  std::string reason;
+  results.good = self.impl->maybe_discover_and_submit_with_stats_and_reason(
+    m, logs, timeout, stats, reason);
+  results.reason = [NSString stringWithUTF8String:reason.c_str()];
   results.updatedSerializedMeasurement = [
     NSString stringWithUTF8String:m.c_str()
   ];

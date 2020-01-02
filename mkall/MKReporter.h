@@ -12,6 +12,9 @@
 /// good indicates whether the operation was successful.
 @property BOOL good;
 
+/// reason is the reason why we failed.
+@property NSString *reason;
+
 /// updatedSerializedMeasurement is the updated serialized measurement
 /// content where fields like the report ID have been updated taking into
 /// account the information that has been returned by the collector.
